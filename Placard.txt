@@ -1,0 +1,27 @@
+title Placard
+
+User->+placard.herokuapp.com: /
+placard.herokuapp.com->+www.jogossantacasa.pt/web/Placard/placard: /
+www.jogossantacasa.pt/web/Placard/placard-->-placard.herokuapp.com: html
+
+note over placard.herokuapp.com
+process the response
+to get the links to
+the sports/countries
+end note
+
+note over placard.herokuapp.com
+get the first
+sport/country link
+end note
+
+placard.herokuapp.com->+www.jogossantacasa.pt/web/Placard/placard: /<url to the first sport/country>
+www.jogossantacasa.pt/web/Placard/placard-->-placard.herokuapp.com: html
+
+note over placard.herokuapp.com
+process the response
+to build the objects
+end note
+
+placard.herokuapp.com-->-User: return the events\nfor the first URL\nwith the links for the\nother sports/countries\nin html
+
