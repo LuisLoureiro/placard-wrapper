@@ -20,6 +20,7 @@ export default class HelloWorld extends React.Component {
   render () {
     return (
       <section className='hello'>
+        <h1>{ this.props.title }</h1>
         <button onClick={this.handleButtonClick}>Click Me</button>
         <p>You've pressed the button { this.state.counter } times.</p>
       </section>
