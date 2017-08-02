@@ -15,8 +15,8 @@ const BetBlock = (props) => (
 
 const BetsBlock = (props) => (
   <ol>
-    {props.bets.map(bet => (
-      <li>
+    {props.bets.map((bet, idx) => (
+      <li key={idx}>
         <BetBlock bet={bet} />
       </li>
     ))}
@@ -36,8 +36,8 @@ const EventBlock = (props) => (
 
 const EventsBlock = (props) => (
   <ol>
-    {props.events.map(event => (
-      <li>
+    {props.events.map((event, idx) => (
+      <li key={idx}>
         <EventBlock event={event} />
       </li>
     ))}
@@ -53,8 +53,8 @@ const CompetitionBlock = (props) => (
 
 const CompetitionsBlock = (props) => (
   <ol>
-    {props.competitions.map(competition => (
-      <li>
+    {props.competitions.map((competition, idx) => (
+      <li key={idx}>
         <CompetitionBlock competition={competition} />
       </li>
     ))}
@@ -72,8 +72,8 @@ const CountryBlock = (props) => (
 
 const CountriesBlock = (props) => (
   <ol>
-    {props.countries.map(country => (
-      <li>
+    {props.countries.map((country, idx) => (
+      <li key={idx}>
         <CountryBlock country={country} />
       </li>
     ))}
@@ -89,8 +89,8 @@ const SportBlock = (props) => (
 
 const SportsBlock = (props) => (
   <ol>
-    {props.sports.map(sport => (
-      <li>
+    {props.sports.map((sport, idx) => (
+      <li key={idx}>
         <SportBlock sport={sport} />
       </li>
     ))}
