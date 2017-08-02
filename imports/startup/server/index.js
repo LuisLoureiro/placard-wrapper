@@ -1,9 +1,7 @@
-// This defines all the collections, publications and methods that
-// the application provides as an API to the client.
-import '../../api'
-
 import { Meteor } from 'meteor/meteor'
 
+import '../../api/sports/server/publications'
+
 Meteor.startup(() => {
-    // code to run on server at startup
+  // code to run on server at startup
 })
