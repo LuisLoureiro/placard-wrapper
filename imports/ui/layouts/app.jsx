@@ -2,9 +2,6 @@ import React from 'react'
 import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import Hello from '../components/hello/hello.jsx'
-import Info from '../components/info/info.jsx'
-
 import { Sports } from '../../api/sports'
 
 const BetBlock = (props) => (
@@ -110,8 +107,6 @@ const MainBlock = (props) => (
 
 const App = (props) => (
   <section>
-    <Hello title={props.title} />
-    <Info />
     { !props.loading && <MainBlock sports={props.sports} /> }
   </section>
 )
@@ -122,7 +117,6 @@ export default createContainer(props => {
 
   return {
     loading: !allSportsHandle.ready(),
-    sports: allSports.fetch(),
-    title: 'Welcome to Meteor!'
+    sports: allSports.fetch()
   }
 }, App)
