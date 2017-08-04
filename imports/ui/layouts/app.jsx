@@ -4,7 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data'
 
 import { Sports } from '../../api/sports'
 
-const BetsBlock = (props) => (
+const BetsComponent = (props) => (
   <ol>
     {props.bets.map((bet, idx) => (
       <li key={idx}>
@@ -19,7 +19,7 @@ const BetsBlock = (props) => (
   </ol>
 )
 
-const EventsBlock = (props) => (
+const EventsComponent = (props) => (
   <ol>
     {props.events.map((event, idx) => (
       <li key={idx}>
@@ -28,58 +28,58 @@ const EventsBlock = (props) => (
           <span> - {event.date.toLocaleString()}</span>
           <span> - {event.home} X {event.away}</span>
         </p>
-        <BetsBlock bets={event.bets} />
+        <BetsComponent bets={event.bets} />
       </li>
     ))}
   </ol>
 )
 
-const CompetitionsBlock = (props) => (
+const CompetitionsComponent = (props) => (
   <ol>
     {props.competitions.map((competition, idx) => (
       <li key={idx}>
         <p>{competition.name}</p>
-        <EventsBlock events={competition.events} />
+        <EventsComponent events={competition.events} />
       </li>
     ))}
   </ol>
 )
 
-const CountriesBlock = (props) => (
+const CountriesComponent = (props) => (
   <ol>
     {props.countries.map((country, idx) => (
       <li key={idx}>
         <p>
           <span>{country.name}</span> - <span>{country.url}</span>
         </p>
-        <CompetitionsBlock competitions={country.competitions} />
+        <CompetitionsComponent competitions={country.competitions} />
       </li>
     ))}
   </ol>
 )
 
-const SportsBlock = (props) => (
+const SportsComponent = (props) => (
   <ol>
     {props.sports.map((sport, idx) => (
       <li key={idx}>
         <p>{sport.name}</p>
-        <CountriesBlock countries={sport.countries} />
+        <CountriesComponent countries={sport.countries} />
       </li>
     ))}
   </ol>
 )
 
-const MainBlock = (props) => (
+const MainComponent = (props) => (
   <div>
     <h3>Size: {props.sports.length}</h3>
     <h3>Sports:</h3>
-    <SportsBlock sports={props.sports} />
+    <SportsComponent sports={props.sports} />
   </div>
 )
 
 const App = (props) => (
   <section>
-    { !props.loading && <MainBlock sports={props.sports} /> }
+    { !props.loading && <MainComponent sports={props.sports} /> }
   </section>
 )
 
