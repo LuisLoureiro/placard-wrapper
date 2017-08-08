@@ -8,7 +8,7 @@ import CompetitionsComponent from '../components/competitions'
 import EventsComponent from '../components/events'
 import BetsComponent from '../components/bets'
 
-import { Sports } from '../../api/sports'
+import SportsAPI from '../../api/sports'
 
 const MainComponent = (props) => (
   <div>
@@ -34,7 +34,7 @@ const App = (props) => (
 
 export default createContainer(props => {
   const allSportsHandle = Meteor.subscribe('sports.all')
-  const allSports = Sports.getAll()
+  const allSports = SportsAPI.getAll()
 
   return {
     loading: !allSportsHandle.ready(),
