@@ -11,24 +11,20 @@ import Bets from '../components/bets'
 import SportsAPI from '../../api/sports'
 
 const Main = (props) => (
-  <div>
-    <h3>Size: {props.sports.length}</h3>
-    <h3>Sports:</h3>
-    <Sports sports={props.sports}>
-      <Countries>
-        <Competitions>
-          <Events>
-            <Bets />
-          </Events>
-        </Competitions>
-      </Countries>
-    </Sports>
-  </div>
+  <Sports sports={props.sports}>
+    <Countries>
+      <Competitions>
+        <Events>
+          <Bets />
+        </Events>
+      </Competitions>
+    </Countries>
+  </Sports>
 )
 
 const App = (props) => (
   <section>
-    { !props.loading && <Main sports={props.sports} /> }
+    { !props.loading && <Main {...props} /> }
   </section>
 )
 
