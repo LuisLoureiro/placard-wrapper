@@ -2,33 +2,33 @@ import React from 'react'
 import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import SportsComponent from '../components/sports'
-import CountriesComponent from '../components/countries'
-import CompetitionsComponent from '../components/competitions'
-import EventsComponent from '../components/events'
-import BetsComponent from '../components/bets'
+import Sports from '../components/sports'
+import Countries from '../components/countries'
+import Competitions from '../components/competitions'
+import Events from '../components/events'
+import Bets from '../components/bets'
 
 import SportsAPI from '../../api/sports'
 
-const MainComponent = (props) => (
+const Main = (props) => (
   <div>
     <h3>Size: {props.sports.length}</h3>
     <h3>Sports:</h3>
-    <SportsComponent sports={props.sports}>
-      <CountriesComponent>
-        <CompetitionsComponent>
-          <EventsComponent>
-            <BetsComponent />
-          </EventsComponent>
-        </CompetitionsComponent>
-      </CountriesComponent>
-    </SportsComponent>
+    <Sports sports={props.sports}>
+      <Countries>
+        <Competitions>
+          <Events>
+            <Bets />
+          </Events>
+        </Competitions>
+      </Countries>
+    </Sports>
   </div>
 )
 
 const App = (props) => (
   <section>
-    { !props.loading && <MainComponent sports={props.sports} /> }
+    { !props.loading && <Main sports={props.sports} /> }
   </section>
 )
 
