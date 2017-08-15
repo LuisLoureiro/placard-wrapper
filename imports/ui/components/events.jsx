@@ -13,6 +13,9 @@ export default (props) => (
           <span>{event.code}</span>
           <span> - {event.date.toLocaleString()}</span>
           <span> - {event.home} X {event.away}</span>
+          <span> - {event.sport}</span>
+          <span> - {event.country}</span>
+          <span> - {event.competition}</span>
         </p>
         {cloneChildren(props.children, {
           bets: event.bets
