@@ -4,36 +4,53 @@ import { createContainer } from 'meteor/react-meteor-data'
 
 import Sports from '../components/sports'
 import Countries from '../components/countries'
-import Competitions from '../components/competitions'
 import Events from '../components/events'
 import Bets from '../components/bets'
 
 import SportsAPI from '../../api/sports'
+import EventsAPI from '../../api/events'
+
+const Header = (props) => (
+  <header>
+    <nav>
+      {
+        !props.loadingSports &&
+          <Sports sports={props.sports}>
+            <Countries />
+          </Sports>
+      }
+    </nav>
+  </header>
+)
 
 const Main = (props) => (
-  <Sports sports={props.sports}>
-    <Countries>
-      <Competitions>
-        <Events>
+  <main>
+    {
+      !props.loadingEvents &&
+        <Events events={props.events}>
           <Bets />
         </Events>
-      </Competitions>
-    </Countries>
-  </Sports>
+    }
+  </main>
 )
 
 const App = (props) => (
-  <section>
-    { !props.loading && <Main {...props} /> }
-  </section>
+  <div>
+    <Header {...props} />
+    <Main {...props} />
+  </div>
 )
 
 export default createContainer(props => {
   const allSportsHandle = Meteor.subscribe('sports.all')
+  const allEventsHandle = Meteor.subscribe('events.all')
   const allSports = SportsAPI.getAll()
+  const allEvents = EventsAPI.getAll()
 
   return {
-    loading: !allSportsHandle.ready(),
-    sports: allSports.fetch()
+    loadingSports: !allSportsHandle.ready(),
+    loadingEvents: !allEventsHandle.ready(),
+    sports: allSports.fetch(),
+    events: allEvents.fetch()
   }
 }, App)
