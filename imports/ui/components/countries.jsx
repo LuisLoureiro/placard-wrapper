@@ -9,9 +9,7 @@ export default (props) => (
   <ol>
     {props.countries.map((country, idx) => (
       <li key={idx}>
-        <p>
-          <span>{country.name}</span> - <span>{country.url}</span>
-        </p>
+        <p>{country.name}</p>
         {cloneChildren(props.children, {
           competitions: country.competitions
         })}

@@ -10,5 +10,7 @@ Sports.deny({
 })
 
 Sports.getAll = function () {
-  return Sports.find({})
+  return Sports.find({}, {
+    fields: {'countries.url': 0}
+  })
 }
