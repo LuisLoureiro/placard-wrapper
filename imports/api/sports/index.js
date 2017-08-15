@@ -1,6 +1,6 @@
 import { Mongo } from 'meteor/mongo'
 
-export const Sports = new Mongo.Collection('sports')
+export const Sports = new Mongo.Collection('sportsAndCountries')
 export default Sports
 
 Sports.deny({
