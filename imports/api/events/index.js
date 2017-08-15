@@ -10,5 +10,7 @@ Events.deny({
 })
 
 Events.getAll = function () {
-  return Events.find({})
+  return Events.find({}, {
+    sort: {'date': 1}
+  })
 }
