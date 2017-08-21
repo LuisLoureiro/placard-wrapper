@@ -10,7 +10,22 @@ Events.deny({
 })
 
 Events.getAll = function () {
-  return Events.find({}, {
-    sort: {'date': 1}
+  return findWithDefaultSort()
+}
+
+Events.getAllForNext24Hours = function () {
+  const date = new Date()
+
+  date.setHours(date.getHours() + 24)
+
+  return findWithDefaultSort({
+    date: { $lte: date }
   })
+}
+
+function findWithDefaultSort (filter) {
+  const defaultSort = {
+    sort: { 'date': 1 }
+  }
+  return Events.find(filter || {}, defaultSort)
 }

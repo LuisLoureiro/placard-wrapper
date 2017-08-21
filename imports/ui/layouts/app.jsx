@@ -15,9 +15,9 @@ const Header = (props) => (
     <nav>
       {
         !props.loadingSports &&
-          <Sports sports={props.sports}>
-            <Countries />
-          </Sports>
+        <Sports sports={props.sports}>
+          <Countries />
+        </Sports>
       }
     </nav>
   </header>
@@ -27,9 +27,9 @@ const Main = (props) => (
   <main>
     {
       !props.loadingEvents &&
-        <Events events={props.events}>
-          <Bets />
-        </Events>
+      <Events events={props.events}>
+        <Bets />
+      </Events>
     }
   </main>
 )
@@ -43,9 +43,9 @@ const App = (props) => (
 
 export default createContainer(props => {
   const allSportsHandle = Meteor.subscribe('sports.all')
-  const allEventsHandle = Meteor.subscribe('events.all')
+  const allEventsHandle = Meteor.subscribe('events.next24Hours')
   const allSports = SportsAPI.getAll()
-  const allEvents = EventsAPI.getAll()
+  const allEvents = EventsAPI.getAllForNext24Hours()
 
   return {
     loadingSports: !allSportsHandle.ready(),
