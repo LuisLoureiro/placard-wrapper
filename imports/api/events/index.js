@@ -19,7 +19,7 @@ Events.getAllForNext24Hours = function () {
   date.setHours(date.getHours() + 24)
 
   return findWithDefaultSort({
-    date: { $lte: date }
+    date: { $lte: date.valueOf() }
   })
 }
 

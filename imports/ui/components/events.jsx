@@ -11,7 +11,7 @@ export default (props) => (
       <li key={idx}>
         <p>
           <span>{event.code}</span>
-          <span> - {event.date.toLocaleString()}</span>
+          <span> - {event.date && new Date(event.date).toLocaleString()}</span>
           <span> - {event.home} X {event.away}</span>
           <span> - {event.sport}</span>
           <span> - {event.country}</span>
