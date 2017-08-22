@@ -1,0 +1,16 @@
+nav
+  ol, ul
+    display: block
+    li
+      display: inline-block
+      padding: 0 1em
+      ol
+        padding-left: 0
+        position: absolute
+
+.hide-children
+  ol
+    display: none
+  &:hover
+    ol
+      display: block
