@@ -8,7 +8,7 @@ const cloneChildren = (children, childrenProps) => (
 export default (props) => (
   <ol>
     {props.sports.map((sport, idx) => (
-      <li key={idx}>
+      <li key={idx} className={props.hideChildren ? 'hide-children' : ''}>
         <p>{sport.name}</p>
         {cloneChildren(props.children, {
           countries: sport.countries

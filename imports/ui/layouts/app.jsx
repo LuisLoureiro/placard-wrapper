@@ -15,7 +15,7 @@ const Header = (props) => (
     <nav>
       {
         !props.loadingSports &&
-        <Sports sports={props.sports}>
+        <Sports sports={props.sports} hideChildren>
           <Countries />
         </Sports>
       }
