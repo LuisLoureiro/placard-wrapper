@@ -16,6 +16,17 @@
     "react-router": "^4.1.2"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.2",
     "standard": "^10.0.2"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          "> 5%",
+          "last 2 versions"
+        ]
+      }
+    }
   }
 }
