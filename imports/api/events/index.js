@@ -9,28 +9,24 @@ Events.deny({
   remove () { return true }
 })
 
-Events.getAll = function () {
-  return findWithDefaultSort()
+Events.getBySportAndCountry = function (sport, country) {
+  if (!sport && !country) {
+    return getAllForNext24Hours()
+  }
+
+  return findWithDefaultSort({
+    sport: sport ? { $eq: sport } : { $ne: sport },
+    country: country ? { $eq: country } : { $ne: country }
+  })
 }
 
-Events.getAllForNext24Hours = function () {
+function getAllForNext24Hours () {
   const date = new Date()
 
   date.setHours(date.getHours() + 24)
 
   return findWithDefaultSort({
     date: { $lte: date.valueOf() }
-  })
-}
-
-Events.getBySportAndCountry = function (sport, country) {
-  if (!sport && !country) {
-    return Events.getAllForNext24Hours()
-  }
-
-  return findWithDefaultSort({
-    sport: sport ? { $eq: sport } : { $ne: sport },
-    country: country ? { $eq: country } : { $ne: country }
   })
 }
 
