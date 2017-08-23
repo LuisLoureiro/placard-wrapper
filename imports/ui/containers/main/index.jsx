@@ -1,15 +1,16 @@
-import React from 'react'
+import { Meteor } from 'meteor/meteor'
+import { createContainer } from 'meteor/react-meteor-data'
 
-import Events from '../../components/events'
-import Bets from '../../components/bets'
+import Main from '../../components/main/index'
 
-export default (props) => (
-  <main>
-    {
-      !props.loadingEvents &&
-      <Events events={props.events}>
-        <Bets />
-      </Events>
-    }
-  </main>
-)
+import EventsAPI from '../../../api/events'
+
+export default createContainer(props => {
+  const allEventsHandle = Meteor.subscribe('events.next24Hours')
+  const allEvents = EventsAPI.getAllForNext24Hours()
+
+  return {
+    loadingEvents: !allEventsHandle.ready(),
+    events: allEvents.fetch()
+  }
+}, Main)

@@ -3,12 +3,16 @@ import { Router, Route } from 'react-router'
 import createBrowserHistory from 'history/createBrowserHistory'
 
 // route components
-import AppContainer from '../../ui/layouts/app.jsx'
+import HeaderContainer from '../../ui/containers/header/index'
+import MainContainer from '../../ui/containers/main/index'
 
 const browserHistory = createBrowserHistory()
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>
-    <Route exact path='/' component={AppContainer} />
+    <div>
+      <Route component={HeaderContainer} />
+      <Route path='/:sport?/:country?' component={MainContainer} />
+    </div>
   </Router>
 )

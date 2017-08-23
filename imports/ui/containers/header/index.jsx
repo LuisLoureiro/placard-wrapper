@@ -1,17 +1,16 @@
-import React from 'react'
+import { Meteor } from 'meteor/meteor'
+import { createContainer } from 'meteor/react-meteor-data'
 
-import Sports from '../../components/sports'
-import Countries from '../../components/countries'
+import Header from '../../components/header/index'
 
-export default (props) => (
-  <header>
-    <nav>
-      {
-        !props.loadingSports &&
-        <Sports sports={props.sports} hideChildren>
-          <Countries />
-        </Sports>
-      }
-    </nav>
-  </header>
-)
+import SportsAPI from '../../../api/sports'
+
+export default createContainer(props => {
+  const allSportsHandle = Meteor.subscribe('sports.all')
+  const allSports = SportsAPI.getAll()
+
+  return {
+    loadingSports: !allSportsHandle.ready(),
+    sports: allSports.fetch()
+  }
+}, Header)
