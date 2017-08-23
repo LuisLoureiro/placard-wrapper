@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const cloneChildren = (children, childrenProps) => (
   React.Children.map(children,
@@ -9,7 +10,7 @@ export default (props) => (
   <ol>
     {props.countries.map((country, idx) => (
       <li key={idx}>
-        <p>{country.name}</p>
+        <NavLink to={`/${props.sportName}/${country.name}`}>{country.name}</NavLink>
         {cloneChildren(props.children, {
           competitions: country.competitions
         })}
