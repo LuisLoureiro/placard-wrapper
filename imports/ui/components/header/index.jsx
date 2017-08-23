@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import Sports from '../sports'
 import Countries from '../countries'
@@ -7,6 +8,7 @@ import PlacardLink from '../placard-link/index'
 export default (props) => (
   <header>
     <nav>
+      <NavLink exact to='/' className='to-right'>Home</NavLink>
       <PlacardLink />
       {
         !props.loadingSports &&
