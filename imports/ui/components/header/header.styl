@@ -3,12 +3,25 @@ header
   top: 0
 
 nav
-  ol, ul
-    background-color: #FFF
+  a
+    color: #FFF
+    display: inline-block
+    padding: 1em
+    text-decoration: none
+    &.active
+      background-color: #EF3E45
+
+    &:active
+    &:hover
+    &:focus
+      background-color: #D4373E
+
+  ol
+  ul
+    background-color: #000
     display: block
     li
       display: inline-block
-      padding: 0 1em
       ol
         padding-left: 0
         position: absolute
@@ -16,6 +29,5 @@ nav
 .hide-children
   ol
     display: none
-  &:hover
-    ol
+  &:hover ol
       display: block
