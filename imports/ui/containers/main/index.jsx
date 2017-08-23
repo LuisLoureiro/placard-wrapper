@@ -14,6 +14,8 @@ export default createContainer(props => {
 
   return {
     loadingEvents: !allEventsHandle.ready(),
-    events: allEvents.fetch()
+    events: allEvents.fetch(),
+    hideSport: !!sport,
+    hideCountry: !!country
   }
 }, Main)
