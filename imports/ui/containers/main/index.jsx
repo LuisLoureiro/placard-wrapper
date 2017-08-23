@@ -6,8 +6,11 @@ import Main from '../../components/main/index'
 import EventsAPI from '../../../api/events'
 
 export default createContainer(props => {
-  const allEventsHandle = Meteor.subscribe('events.next24Hours')
-  const allEvents = EventsAPI.getAllForNext24Hours()
+  const sport = props.match.params.sport
+  const country = props.match.params.country
+
+  const allEventsHandle = Meteor.subscribe('events.bySportAndCountry', sport, country)
+  const allEvents = EventsAPI.getBySportAndCountry(sport, country)
 
   return {
     loadingEvents: !allEventsHandle.ready(),

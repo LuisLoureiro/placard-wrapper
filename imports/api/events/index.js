@@ -23,6 +23,17 @@ Events.getAllForNext24Hours = function () {
   })
 }
 
+Events.getBySportAndCountry = function (sport, country) {
+  if (!sport && !country) {
+    return Events.getAllForNext24Hours()
+  }
+
+  return findWithDefaultSort({
+    sport: sport ? { $eq: sport } : { $ne: sport },
+    country: country ? { $eq: country } : { $ne: country }
+  })
+}
+
 function findWithDefaultSort (filter) {
   const defaultSort = {
     sort: { 'date': 1 }
