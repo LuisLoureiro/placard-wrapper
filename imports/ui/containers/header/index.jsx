@@ -11,6 +11,17 @@ export default createContainer(props => {
 
   return {
     loadingSports: !allSportsHandle.ready(),
-    sports: allSports.fetch()
+    sports: allSports.fetch(),
+    navButtonClick: scrollSports
   }
 }, Header)
+
+function scrollSports (direction, scrollElement) {
+  const MULTIPLIER = 50
+
+  if (!scrollElement || !('scrollLeft' in scrollElement) || (direction !== -1 && direction !== 1)) {
+    return false
+  }
+
+  scrollElement.scrollLeft += (MULTIPLIER * direction)
+}

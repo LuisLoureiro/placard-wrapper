@@ -15,7 +15,7 @@ nav
   a:not(.default)
     color: inherit
     display: inline-block
-    outline: 0
+    outline: none
     padding: $default-padding
     text-decoration: none
     &.active
@@ -27,16 +27,33 @@ nav
       background-color: $secondary-red
 
   ol
-  ul
     background-color: $black
     margin-block-end: 0
     margin-block-start: 0
+    padding-inline-start: 0
+    white-space: normal
+    &.no-overflow-x
+      overflow-x: hidden
+      white-space: nowrap
     li
       display: inline-block
       ol
         padding-left: 0
         position: absolute
 
+  button
+    background-color: inherit
+    border: none
+    color: inherit
+    cursor: pointer
+    display: inline-block
+    font-size: 2em
+    line-height: 1.575em
+    padding: 0 0.5em
+    outline: none
+    &:hover
+      background-color: $white
+      color: $black
 .hide-children
   ol
     display: none

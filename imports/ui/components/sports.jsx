@@ -7,7 +7,7 @@ const cloneChildren = (children, childrenProps) => (
 )
 
 export default (props) => (
-  <ol>
+  <ol className={props.className}>
     {props.sports.map((sport, idx) => (
       <li key={idx} className={props.hideChildren ? 'hide-children' : ''}>
         <NavLink to={`/${sport.name}`}>{sport.name}</NavLink>
