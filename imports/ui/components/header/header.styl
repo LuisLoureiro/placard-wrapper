@@ -1,26 +1,36 @@
+$default-padding = 1em
+$primary-red = #EF3E45
+$secondary-red = #D4373E
+$black = #000
+$white = #FFF
+
 header
   position: sticky
-  top: -1px
+  top: $default-padding * -1
 
 nav
+  background-color: $black
+  color: $white
+  padding-top: $default-padding
   a:not(.default)
-    color: #FFF
+    color: inherit
     display: inline-block
     outline: 0
-    padding: 1em
+    padding: $default-padding
     text-decoration: none
     &.active
-      background-color: #EF3E45
+      background-color: $primary-red
 
     &:active
     &:hover
     &:focus
-      background-color: #D4373E
+      background-color: $secondary-red
 
   ol
   ul
-    background-color: #000
-    display: block
+    background-color: $black
+    margin-block-end: 0
+    margin-block-start: 0
     li
       display: inline-block
       ol
