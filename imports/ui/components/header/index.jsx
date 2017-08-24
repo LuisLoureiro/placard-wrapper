@@ -9,7 +9,7 @@ export default (props) => (
   <header>
     <nav>
       <NavLink exact to='/' className='to-right'>Home</NavLink>
-      <PlacardLink />
+      <PlacardLink className='default to-right' />
       {
         !props.loadingSports &&
         <Sports sports={props.sports} hideChildren>
