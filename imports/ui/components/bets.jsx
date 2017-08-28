@@ -1,16 +1,16 @@
 import React from 'react'
 
 export default (props) => (
-  <ol>
-    {props.bets.map((bet, idx) => (
-      <li key={idx}>
-        <small>
-          <span>{bet.name}</span>
-          <span>{bet.home.value}</span>
-          {bet.draw.name && <span> | {bet.draw.value}</span>}
-          <span> | {bet.away.value}</span>
-        </small>
-      </li>
-    ))}
-  </ol>
+  <table>
+    <tbody>
+      {props.bets.map((bet, idx) => (
+        <tr key={idx}>
+          <td>{bet.name}</td>
+          <td>{bet.home.value}</td>
+          {bet.draw.name && <td>{bet.draw.value}</td>}
+          <td>{bet.away.value}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 )

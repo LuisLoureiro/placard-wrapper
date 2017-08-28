@@ -8,16 +8,20 @@ main
       pad-block 0.5em
       &:hover
         background-color: $secondary-grey
-      ol li
-        pad-block 0.25em
-        &:hover
-          background-color: $tertiary-grey
-        span
-          &:first-child
-            padding-right: 0.5em
-          &:not(:first-child)
-            color: $primary-red
-            font-weight: 700
+      table
+        width: 50%
+        tr
+          &:hover
+            background-color: $tertiary-grey
+          td
+            font-size: 80%
+            line-height: 1.5em
+            pad-block 0.25em
+            &:first-child
+              pad-inline-st 1em
+            &:not(:first-child)
+              color: $primary-red
+              font-weight: 700
 main
   > ol
     > li
