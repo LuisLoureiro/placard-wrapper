@@ -1,10 +1,48 @@
+$primary-grey = #E8E8E8
+$secondary-grey = $primary-grey - #0F0F0F
+$tertiary-grey = $secondary-grey - #0F0F0F
+
+pad-inline-st(n)
+  padding-inline-start: n
+  padding-left: n
+
+pad-inline-end(n)
+  padding-inline-end: n
+  padding-right: n
+
+pad-block-st(n)
+  padding-block-start: n
+  padding-top: n
+
+pad-block-end(n)
+  padding-block-end: n
+  padding-bottom: n
+
+pad-inline(n)
+  pad-inline-st n
+  pad-inline-end n
+
+pad-block(n)
+  pad-block-st n
+  pad-block-end n
+
 main
-  ol, ul
-    padding-inline-start: 1em
-    padding-left: 1em
+  background-color: $primary-grey
+  ol
     li
-      padding-block-start: 1em
-      padding-top: 1em
+      pad-inline 1em
+      pad-block 0.5em
+      &:hover
+        background-color: $secondary-grey
       ol li
-        padding-block-start: 0.5em
-        padding-top: 0.5em
+        pad-block 0.25em
+        &:hover
+          background-color: $tertiary-grey
+
+main
+  > ol
+    > li
+      &:first-child
+        pad-block-st 1em
+      &:last-child
+        pad-block-end 1em
