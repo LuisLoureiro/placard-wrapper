@@ -1,24 +1,22 @@
-* {
+@import './mixins.styl'
+@import './variables.styl'
+
+* 
   font-family: Arial, Helvetica, sans-serif
-}
 
-ol, ul
+body
+  background-color: $primary-grey
+
+ol
   list-style: none
-  margin-block-end: 0
-  margin-block-start: 0
-  margin-inline-end: 0
-  margin-inline-start: 0
-  padding-inline-start: 0
-  padding-inline-end: 0
-  padding-block-start: 0
-  padding-block-end: 0
+  marg-block 0
+  marg-inline 0
+  pad-inline 0
+  pad-block 0
 
-p {
-  margin-block-end: 0
-  margin-block-start: 0
-  margin-inline-end: 0
-  margin-inline-start: 0
-}
+p
+  marg-block 0
+  marg-inline 0
 
 .to-left
   float: left
