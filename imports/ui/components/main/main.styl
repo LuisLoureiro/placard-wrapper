@@ -12,7 +12,12 @@ main
         pad-block 0.25em
         &:hover
           background-color: $tertiary-grey
-
+        span
+          &:first-child
+            padding-right: 0.5em
+          &:not(:first-child)
+            color: $primary-red
+            font-weight: 700
 main
   > ol
     > li

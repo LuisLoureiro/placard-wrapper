@@ -6,7 +6,7 @@ export default (props) => (
       <li key={idx}>
         <small>
           <span>{bet.name}</span>
-          <span> - {bet.home.value}</span>
+          <span>{bet.home.value}</span>
           {bet.draw.name && <span> | {bet.draw.value}</span>}
           <span> | {bet.away.value}</span>
         </small>
