@@ -1,0 +1,13 @@
+@require '../../layouts/variables.styl'
+@require '../../layouts/mixins.styl'
+
+ol
+  li
+    pad-inline $default-padding
+    pad-block 0.5em
+    &:hover
+      background-color: $secondary-grey
+    &:first-child
+      pad-block-st $default-padding
+    &:last-child
+      pad-block-end $default-padding

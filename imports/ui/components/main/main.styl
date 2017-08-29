@@ -1,32 +1,20 @@
-@import '../../layouts/variables.styl'
-@import '../../layouts/mixins.styl'
+@require '../../layouts/variables.styl'
+@require '../../layouts/mixins.styl'
 
 main
-  ol
-    li
-      pad-inline $default-padding
-      pad-block 0.5em
+  @import '../events/events.styl'
+  table
+    width: 50%
+    tr
       &:hover
-        background-color: $secondary-grey
-      table
-        width: 50%
-        tr
-          &:hover
-            background-color: $tertiary-grey
-          td
-            font-size: 80%
-            line-height: 1.5em
-            pad-block 0.25em
-            pad-inline 1em
-            &:first-child
-              white-space: nowrap
-            &:not(:first-child)
-              color: $primary-red
-              text-bold()
-main
-  > ol
-    > li
-      &:first-child
-        pad-block-st $default-padding
-      &:last-child
-        pad-block-end $default-padding
+        background-color: $tertiary-grey
+      td
+        font-size: 80%
+        line-height: 1.5em
+        pad-block 0.25em
+        pad-inline 1em
+        &:first-child
+          white-space: nowrap
+        &:not(:first-child)
+          color: $primary-red
+          text-bold()
