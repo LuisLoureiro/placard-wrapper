@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Events from '../events'
+import Events from '../events/index'
 import Bets from '../bets'
 
 export default (props) => (
