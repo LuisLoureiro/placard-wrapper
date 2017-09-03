@@ -27,7 +27,7 @@ export default class Header extends Component {
     return <header>
       <nav>
         <NavLink exact to='/' className='to-right'>Home</NavLink>
-        <PlacardLink className='default to-right' />
+        <PlacardLink className='placard-link to-right' />
         <button className='to-left' data-direction='-1' onClick={this.navButtonClick}>&#171;</button>
         <button className='to-right' data-direction='1' onClick={this.navButtonClick}>&#187;</button>
         {

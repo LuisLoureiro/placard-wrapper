@@ -9,19 +9,24 @@ nav
   background-color: $black
   color: $white
   padding-top: $default-padding
-  a:not(.default)
+  a
     color: inherit
-    inline-block()
     outline: none
-    padding: $default-padding
     text-decoration: none
-    &.active
-      background-color: $primary-red
+    &.placard-link
+      img
+        height: 2.65em
+        width: 5.3em
+    &:not(.placard-link)
+      inline-block()
+      padding: $default-padding
+      &.active
+        background-color: $primary-red
 
-    &:active
-    &:hover
-    &:focus
-      background-color: $secondary-red
+      &:active
+      &:hover
+      &:focus
+        background-color: $secondary-red
 
   ol
     background-color: $black
