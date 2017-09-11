@@ -6,7 +6,7 @@ import Bets from '../bets'
 export default (props) => (
   <main>
     {
-      !props.loadingEvents &&
+      !props.loadingEvents && props.events &&
       <Events events={props.events} hideSport={props.hideSport} hideCountry={props.hideCountry}>
         <Bets />
       </Events>

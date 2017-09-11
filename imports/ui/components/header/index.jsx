@@ -31,7 +31,7 @@ export default class Header extends Component {
         <button className='to-left' data-direction='-1' onClick={this.navButtonClick}>&#171;</button>
         <button className='to-right' data-direction='1' onClick={this.navButtonClick}>&#187;</button>
         {
-          !this.props.loadingSports &&
+          !this.props.loadingSports && this.props.sports &&
           <Sports className='no-overflow-x' sports={this.props.sports} hideChildren>
             <Countries />
           </Sports>
