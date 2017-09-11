@@ -1,7 +1,7 @@
 import {
   GET_EVENTS,
   SET_EVENTS
-} from './actions/events'
+} from '../actions/events'
 
 const eventsInitialState = {
   events: []

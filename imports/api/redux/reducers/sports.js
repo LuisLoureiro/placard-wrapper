@@ -1,7 +1,7 @@
 import {
   GET_SPORTS,
   SET_SPORTS
-} from './actions/sports'
+} from '../actions/sports'
 
 const sportsInitialState = {
   sports: []
