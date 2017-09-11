@@ -1,20 +1,10 @@
-import { Meteor } from 'meteor/meteor'
-import { createContainer } from 'meteor/react-meteor-data'
+import { connect } from 'react-redux'
 
 import Header from '../../components/header/index'
 
-import SportsAPI from '../../../api/sports'
+const mapStateToProps = state => ({ sports: state.sports, navButtonClick: scrollSports })
 
-export default createContainer(props => {
-  const allSportsHandle = Meteor.subscribe('sports.all')
-  const allSports = SportsAPI.getAll()
-
-  return {
-    loadingSports: !allSportsHandle.ready(),
-    sports: allSports.fetch(),
-    navButtonClick: scrollSports
-  }
-}, Header)
+export default connect(mapStateToProps)(Header)
 
 function scrollSports (direction, scrollElement) {
   const MULTIPLIER = 50
