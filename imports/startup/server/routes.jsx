@@ -1,20 +1,10 @@
 import React from 'react'
-import { StaticRouter, Route } from 'react-router'
-import { connect } from 'react-redux'
+import { StaticRouter } from 'react-router'
 
-// route components
-import Header from '../../ui/components/header/index'
-import Main from '../../ui/components/main/index'
+import routes from '../both/routes'
 
 export default (location) => (
   <StaticRouter location={location} context={{}}>
-    <div>
-      <Route component={HeaderContainer} />
-      <Route path='/:sport?/:country?' component={MainContainer} />
-    </div>
+    {routes}
   </StaticRouter>
 )
-
-const HeaderContainer = connect(state => ({ sports: state.sports }))(Header)
-
-const MainContainer = connect(state => ({ events: state.events }))(Main)
