@@ -19,3 +19,4 @@ static-html
 react-meteor-data
 stylus
 juliancwirko:postcss
+server-render
