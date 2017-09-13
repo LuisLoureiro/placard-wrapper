@@ -1,10 +1,15 @@
 import React from 'react'
-import { StaticRouter } from 'react-router'
+import { StaticRouter, Route } from 'react-router'
 
-import routes from '../both/routes'
+// route components
+import HeaderContainer from '../../ui/containers/header/index'
+import MainContainer from '../../ui/containers/main/index'
 
 export default (location) => (
   <StaticRouter location={location} context={{}}>
-    {routes}
+    <div>
+      <Route component={HeaderContainer} />
+      <Route path='/:sport?/:country?' component={MainContainer} />
+    </div>
   </StaticRouter>
 )
