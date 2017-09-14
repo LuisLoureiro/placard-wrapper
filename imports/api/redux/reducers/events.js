@@ -3,19 +3,15 @@ import {
   SET_EVENTS
 } from '../actions/events'
 
-const eventsInitialState = {
-  events: []
-}
+const eventsInitialState = []
 
 export default (state = eventsInitialState, action) => {
   switch (action.type) {
     case GET_EVENTS:
-      return state.events
+      return state
 
     case SET_EVENTS:
-      return Object.assign({}, state, {
-        events: action.events || []
-      })
+      return action.events || state
 
     default:
       return state
