@@ -13,8 +13,15 @@ import '../../api/events/server/publications'
 
 onPageLoad(sink => {
   const url = sink.request.url
+  const pathname = url.pathname.split('/')
+  const sport = pathname[1]
+  const country = pathname[2]
   const initialState = {
-    events: eventsAPI.getBySportAndCountry(url.pathname.split('/')[1], url.pathname.split('/')[2]).fetch(),
+    events: eventsAPI.getBySportAndCountry(sport, country).fetch(),
+    hideValues: {
+      hideCountry: !!country,
+      hideSport: !!sport
+    },
     sports: sportsAPI.getAll().fetch()
   }
   const store = createStore(mainReducer, initialState)
