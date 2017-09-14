@@ -9,7 +9,7 @@ import mainReducer from '../../api/redux/reducers'
 Meteor.startup(() => {
   const store = createStore(mainReducer, window.__PRELOADED_STATE__)
 
-  delete window.window.__PRELOADED_STATE__
+  delete window.__PRELOADED_STATE__
 
   render(withProvider(store, renderRoutes()), document.getElementById('app'))
 })
