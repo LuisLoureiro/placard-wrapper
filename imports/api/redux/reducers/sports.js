@@ -8,7 +8,7 @@ const sportsInitialState = {
 }
 
 export default (state = sportsInitialState, action) => {
-  switch (action) {
+  switch (action.type) {
     case GET_SPORTS:
       return state.sports
 

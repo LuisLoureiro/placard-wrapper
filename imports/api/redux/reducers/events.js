@@ -8,7 +8,7 @@ const eventsInitialState = {
 }
 
 export default (state = eventsInitialState, action) => {
-  switch (action) {
+  switch (action.type) {
     case GET_EVENTS:
       return state.events
 
