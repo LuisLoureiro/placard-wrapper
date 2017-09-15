@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import Main from '../../components/main/index'
 
@@ -8,4 +9,4 @@ const mapStateToProps = state => ({
   hideSport: state.hideValues.hideSport
 })
 
-export default connect(mapStateToProps)(Main)
+export default withRouter(connect(mapStateToProps)(Main))
