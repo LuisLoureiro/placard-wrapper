@@ -12,7 +12,7 @@ import '../../api/sports/server/publications'
 import '../../api/events/server/publications'
 
 onPageLoad(sink => {
-  const url = sink.request.url
+  const url = decodeUrlObject(sink.request.url)
   const pathname = url.pathname.split('/')
   const sport = pathname[1]
   const country = pathname[2]
@@ -34,3 +34,11 @@ onPageLoad(sink => {
     </script>
   `)
 })
+
+function decodeUrlObject (url) {
+  url.pathname = decodeURI(url.pathname)
+  url.path = decodeURI(url.path)
+  url.href = decodeURI(url.href)
+
+  return url
+}
