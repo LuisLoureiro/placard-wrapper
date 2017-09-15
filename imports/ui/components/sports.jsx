@@ -1,10 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const cloneChildren = (children, childrenProps) => (
-  React.Children.map(children,
-    child => React.cloneElement(child, childrenProps))
-)
+import cloneChildren from './cloneChildren'
 
 export default (props) => (
   <ol className={props.className}>
