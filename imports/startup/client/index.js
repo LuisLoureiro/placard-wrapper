@@ -11,5 +11,5 @@ Meteor.startup(() => {
 
   delete window.__PRELOADED_STATE__
 
-  render(withProvider(store, renderRoutes()), document.getElementById('app'))
+  render(withProvider(store, renderRoutes(store.dispatch)), document.getElementById('app'))
 })
