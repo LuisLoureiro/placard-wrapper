@@ -20,7 +20,7 @@ export default class Header extends Component {
       sportElement = sportElement.nextElementSibling
     }
 
-    return this.props.navButtonClick(direction, sportElement)
+    return scrollSports(direction, sportElement)
   }
 
   render () {
@@ -39,4 +39,14 @@ export default class Header extends Component {
       </nav>
     </header>
   }
+}
+
+function scrollSports (direction, scrollElement) {
+  const MULTIPLIER = 50
+
+  if (!scrollElement || !('scrollLeft' in scrollElement) || (direction !== -1 && direction !== 1)) {
+    return false
+  }
+
+  scrollElement.scrollLeft += (MULTIPLIER * direction)
 }
