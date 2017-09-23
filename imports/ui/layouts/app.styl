@@ -9,6 +9,15 @@
 body
   background-color: $primary-grey
 
+button
+  background-color: transparent
+  border: 0
+  color: inherit
+  cursor: pointer
+  font-weight: inherit
+  outline: 0
+  padding: 0
+
 ol
   list-style: none
   marg-block 0
@@ -25,14 +34,24 @@ table
   td
     padding: 0
 
+.bold
+  text-bold()
+
+.minimized
+  display: none
+
+.maximized
+  display: block
+
+.rotate-180
+  transform: rotate(180deg)
+
 .to-left
   float: left
 
 .to-right
   float: right
 
-.bold
-  text-bold()
-
 @import '../components/header/header.styl'
 @import '../components/main/main.styl'
+@import '../components/betsSelectedBox/betsSelectedBox.styl'
