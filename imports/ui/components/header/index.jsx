@@ -13,8 +13,8 @@ export default class Header extends Component {
   }
 
   navButtonClick (event) {
-    const direction = Number.parseInt(event.currentTarget.dataset.direction)
-    let sportElement = event.currentTarget.nextElementSibling
+    const direction = Number.parseInt(event.target.dataset.direction)
+    let sportElement = event.target.nextElementSibling
 
     if (sportElement.tagName === 'BUTTON') {
       sportElement = sportElement.nextElementSibling
