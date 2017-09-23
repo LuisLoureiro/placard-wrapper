@@ -7,7 +7,10 @@ export default (props) => (
   <main>
     {
       !props.loadingEvents && props.events &&
-      <Events events={props.events} hideSport={props.hideSport} hideCountry={props.hideCountry}>
+      <Events events={props.events}
+        hideSport={props.hideSport}
+        hideCountry={props.hideCountry}
+        onEventClick={props.onEventClick}>
         <Bets />
       </Events>
     }

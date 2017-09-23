@@ -5,7 +5,7 @@ import cloneChildren from '../cloneChildren'
 export default (props) => (
   <ol>
     {props.events.map((event, idx) => (
-      <li key={idx}>
+      <li key={idx} onClick={ev => props.onEventClick(ev, event)}>
         <p>
           <span className='bold'>{event.code}</span>
           <span>{event.date && new Date(event.date).toLocaleString()}</span>

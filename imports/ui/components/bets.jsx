@@ -6,11 +6,26 @@ export default (props) => (
       {props.bets.map((bet, idx) => (
         <tr key={idx}>
           <td>{bet.name}</td>
-          <td>{bet.home.value}</td>
-          {bet.draw.name && <td>{bet.draw.value}</td>}
-          <td>{bet.away.value}</td>
+          <td>
+            <BetButton betName={bet.name} odd={bet.home} />
+          </td>
+          {bet.draw.name && <td>
+            <BetButton betName={bet.name} odd={bet.draw} />
+          </td>}
+          <td>
+            <BetButton betName={bet.name} odd={bet.away} />
+          </td>
         </tr>
       ))}
     </tbody>
   </table>
+)
+
+const BetButton = ({ odd, betName }) => (
+  <button
+    data-betname={betName}
+    data-odd-name={odd.name}
+    data-odd-value={odd.value}>
+    {odd.value}
+  </button>
 )
