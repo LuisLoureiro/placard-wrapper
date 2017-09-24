@@ -20,20 +20,26 @@ export default class BetsSelectedBox extends Component {
   render () {
     return (
       <aside>
-        <header>
-          <p>
-            <span>SIMULADOR</span>
-            <button
-              className={this.state.minimized ? 'to-right rotate-180' : 'to-right'}
-              onClick={this.changeMinimized}>V</button>
-          </p>
-        </header>
-        <main className={this.state.minimized ? 'minimized' : 'maximized'}>
+        <table className={this.state.minimized ? 'minimized' : ''}>
+          <thead>
+            <tr>
+              <th>SIMULADOR</th>
+              <th>
+                <button
+                  className={this.state.minimized ? 'to-right rotate-180' : 'to-right'}
+                  onClick={this.changeMinimized}>V</button>
+              </th>
+            </tr>
+          </thead>
           {this.props.children}
-        </main>
-        <footer className={this.state.minimized ? 'minimized' : 'maximized'}>
-          <button onClick={this.props.clearList}>Limpar</button>
-        </footer>
+          <tfoot>
+            <tr>
+              <td>
+                <button onClick={this.props.clearList}>Limpar</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
       </aside>
     )
   }

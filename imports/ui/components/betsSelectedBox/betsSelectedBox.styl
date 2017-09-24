@@ -3,23 +3,28 @@
 aside
   background-color: $tertiary-grey
   border: 5px solid $primary-red
-  border-radius: 5px
+  border-top-left-radius: 5px
+  border-top-right-radius: 5px
   bottom: 0
   margin-left: $default-padding
   padding: 0.2em
   position: fixed
   right: $default-padding
 
-  header
-  footer
-    button
-      color: $white
-      text-bold()
+  table
+    &.minimized
+      tbody
+      tfoot
+        display: none
+    thead
+    tfoot
+      button
+        color: $white
+        text-bold()
 
-  header
-    color: $black
-    font-size: 1.4em
+    td
+    th
+      padding: 0.2em 0
 
     button
-      margin-left: $default-padding
       padding: 0 0.2em
