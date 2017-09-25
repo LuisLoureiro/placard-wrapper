@@ -1,0 +1,17 @@
+@require '../../layouts/variables.styl'
+@require '../../layouts/mixins.styl'
+
+tbody
+  background-color: $primary-red
+  color: $white
+  td
+    padding-bottom: 0.2em
+    padding-top: 0.2em
+    &:first-child
+      padding-left: 0.2em
+    small
+      color: $black
+    span
+      &:first-child:not(:last-child)
+        &::after
+          content: ' - '

@@ -1,32 +1,33 @@
 @require '../../layouts/variables.styl'
+@require '../../layouts/mixins.styl'
 
 aside
-  background-color: $tertiary-grey
-  border: 5px solid $primary-red
-  border-top-left-radius: 5px
-  border-top-right-radius: 5px
   bottom: 0
   margin-left: $default-padding
   max-height: calc(100% - 1em)
   overflow-y: auto
-  padding: 0.2em
   position: fixed
   right: $default-padding
 
   table
     &.minimized
-      tbody
-      tfoot
+      > :not(thead)
         display: none
-    thead
-    tfoot
-      button
-        color: $white
-        text-bold()
 
-    td
-    th
-      padding: 0.2em 0
+    thead
+      background-color: $white
+      color: $primary-red
+      th
+        padding: 0.2em 0.5em
+
+    tfoot
+      background-color: $secondary-red
+      color: $white
+      td
+        padding-bottom: 0.2em
+        padding-top: 0.2em
 
     button
       padding: 0 0.2em
+
+    @require '../betsSelected/betsSelected.styl'

@@ -25,7 +25,7 @@ export default class BetsSelectedBox extends Component {
             <tr>
               <th>SIMULADOR</th>
               <th>
-                <button className={this.state.minimized ? 'to-right rotate-180' : 'to-right'}
+                <button className={this.state.minimized ? 'rotate-225' : 'rotate-315'}
                   onClick={this.changeMinimized}>
                   <span>V</span>
                 </button>
@@ -46,5 +46,4 @@ export default class BetsSelectedBox extends Component {
       </aside>
     )
   }
-
 }
