@@ -8,7 +8,7 @@ export default (props) => (
       <li key={idx} onClick={ev => props.onEventClick(ev, event)}>
         <p>
           <span className='bold'>{event.code}</span>
-          <span>{event.date && new Date(event.date).toLocaleString()}</span>
+          <span>{event.date && formatDate(new Date(event.date))}</span>
           <span className='bold'>{event.home} X {event.away}</span>
           {
             !props.hideSport ? <span>{event.sport}</span> : ''
@@ -25,3 +25,11 @@ export default (props) => (
     ))}
   </ol>
 )
+
+function formatDate (date) {
+  return `${setTwoDigits(date.getDate())}/${setTwoDigits(date.getMonth() + 1)}/${date.getFullYear()}, ${setTwoDigits(date.getHours())}:${setTwoDigits(date.getMinutes())}`
+}
+
+function setTwoDigits (number) {
+  return number / 10 < 1 ? '0' + number : number
+}
