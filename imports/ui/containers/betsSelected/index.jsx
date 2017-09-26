@@ -4,7 +4,7 @@ import BetsSelected from '../../components/betsSelected/index'
 import { updateBetsSelected } from '../../../api/redux/actions/betsSelected'
 
 const mapStateToProps = state => ({
-  betsSelected: state.betsSelected
+  betsSelected: state.betsSelected.selected
 })
 
 const mapDispatchToProps = dispatch => ({

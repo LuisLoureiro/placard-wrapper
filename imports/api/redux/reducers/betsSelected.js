@@ -3,16 +3,19 @@ import {
   UPDATE_BETS_SELECTED
 } from '../actions/betsSelected'
 
-const initialState = []
+const initialState = {
+  selected: [],
+  total: 0
+}
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_BETS_SELECTED:
-      const stateLength = state.length
-      const newState = state.filter(current => current.code !== action.event.code)
+      const selectedLength = state.selected.length
+      const newSelected = state.selected.filter(current => current.code !== action.event.code)
 
-      if (newState.length === stateLength) {
-        newState.push({
+      if (newSelected.length === selectedLength) {
+        newSelected.push({
           away: action.event.away,
           betName: action.betName,
           code: action.event.code,
@@ -24,12 +27,23 @@ export default (state = initialState, action) => {
         })
       }
 
-      return newState
+      const newTotal = newSelected.reduce((previous, current) => (
+        (previous || 1) * parseOdd(current.odd.value)
+      ), 0).toFixed(2)
+
+      return Object.assign({}, state, {
+        selected: newSelected,
+        total: newTotal
+      })
 
     case CLEAN_BETS_SELECTED:
-      return []
+      return initialState
 
     default:
       return state
   }
+}
+
+function parseOdd (valueString) {
+  return Number.parseFloat((valueString || '').replace(/,/g, '.'))
 }

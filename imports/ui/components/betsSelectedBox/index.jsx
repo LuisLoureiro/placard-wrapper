@@ -35,10 +35,11 @@ export default class BetsSelectedBox extends Component {
           {this.props.children}
           <tfoot>
             <tr>
-              <td>
+              <td colSpan='2'>
                 <button onClick={this.props.clearList}>
                   <span>Limpar</span>
                 </button>
+                <span className='to-right'>Total: <span className='bold'>{this.props.total}</span></span>
               </td>
             </tr>
           </tfoot>
