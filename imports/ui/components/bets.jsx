@@ -26,6 +26,6 @@ const BetButton = ({ odd, betName }) => (
     data-betname={betName}
     data-odd-name={odd.name}
     data-odd-value={odd.value}>
-    <span>{odd.value}</span>
+    {odd.value}
   </button>
 )

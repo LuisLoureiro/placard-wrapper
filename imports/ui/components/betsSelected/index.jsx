@@ -15,9 +15,7 @@ export default (props) => (
           </p>
         </td>
         <td className='align-center'>
-          <button onClick={e => props.removeOne(bet)}>
-            <span>x</span>
-          </button>
+          <button onClick={e => props.removeOne(bet)}>x</button>
         </td>
       </tr>
     ))}
