@@ -23,10 +23,11 @@ export default class BetsSelectedBox extends Component {
         <table className={this.state.minimized ? 'minimized' : ''}>
           <thead>
             <tr>
-              <th>SIMULADOR</th>
-              <th>
-                <button className={this.state.minimized ? 'rotate-225' : 'rotate-315'}
-                  onClick={this.changeMinimized}>V</button>
+              <th colSpan='2'>
+                <button onClick={this.changeMinimized}>
+                  <span className='to-left'>SIMULADOR</span>
+                  <span className={this.state.minimized ? 'to-right rotate-225' : 'to-right rotate-315'}>V</span>
+                </button>
               </th>
             </tr>
           </thead>
