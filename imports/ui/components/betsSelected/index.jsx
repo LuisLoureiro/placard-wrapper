@@ -5,11 +5,12 @@ export default (props) => (
     {props.betsSelected.map((bet, idx) => (
       <tr key={idx}>
         <td>
-          <small className='bold'>
-            <span>{bet.code}</span>
-            <span>{bet.home} X {bet.away}</span>
-          </small>
+          <p className='bold'>
+            <small>{bet.code}</small>
+            <small>{bet.home} X {bet.away}</small>
+          </p>
           <p className='align-center'>
+            <small><u>{bet.betName}</u></small>
             <span>{bet.odd.name}</span>
             <span className='bold'>{bet.odd.value}</span>
           </p>

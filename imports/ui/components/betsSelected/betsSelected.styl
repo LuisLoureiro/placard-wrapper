@@ -9,9 +9,9 @@ tbody
     padding-top: 0.2em
     &:first-child
       padding-left: 0.2em
-    small
-      color: $black
-    span
-      &:first-child:not(:last-child)
+    p
+      &:first-child
+        color: $black
+      :not(:last-child)
         &::after
           content: ' - '
