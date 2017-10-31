@@ -33,19 +33,19 @@ function formatDate (date) {
 function setTodayTomorrowOrDate (date) {
   const now = new Date()
 
-  if (now.getMonth() === date.getMonth() && now.getFullYear() === date.getFullYear()) {
-    const diff = now.getDate() - date.getDate()
+  if (now.toLocaleDateString() === date.toLocaleDateString()) {
+    return 'Hoje'
+  }
 
-    if (diff === 0) {
-      return 'Hoje'
-    } else if (diff === -1) {
-      return 'Amanhã'
-    }
+  now.setDate(now.getDate() + 1)
+
+  if (now.toLocaleDateString() === date.toLocaleDateString()) {
+    return 'Amanhã'
   }
 
   return `${setTwoDigits(date.getDate())}/${setTwoDigits(date.getMonth() + 1)}/${date.getFullYear()}`
 }
 
 function setTwoDigits (number) {
-  return number / 10 < 1 ? '0' + number : number
+  return (number / 10) < 1 ? '0' + number : number
 }
