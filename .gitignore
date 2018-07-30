@@ -59,3 +59,7 @@ typings/
 
 # IDEs and editors
 .vscode/
+
+.cache/
+public
+yarn-error.log

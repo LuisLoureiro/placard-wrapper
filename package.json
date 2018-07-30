@@ -2,35 +2,17 @@
   "name": "placard-wrapper",
   "description": "A wrapper of Placard, a Portuguese online gambling system. The idea of this application is to provide a better user-experience.",
   "version": "5.0.0",
-  "private": true,
+  "license": "MIT",
   "scripts": {
-    "start": "meteor run"
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
   },
   "dependencies": {
-    "babel-runtime": "^6.20.0",
-    "history": "^4.6.3",
-    "meteor-node-stubs": "~0.2.4",
-    "normalize-stylus": "^1.0.1",
-    "react": "^15.6.1",
-    "react-addons-pure-render-mixin": "^15.6.0",
-    "react-dom": "^15.6.1",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.1.2",
-    "react-router-dom": "^4.1.2",
-    "redux": "^3.7.2"
+    "gatsby": "^1.9.277",
+    "gatsby-link": "^1.6.46"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
     "standard": "^10.0.2"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {
-        "browsers": [
-          "> 5%",
-          "last 2 versions"
-        ]
-      }
-    }
   }
 }
