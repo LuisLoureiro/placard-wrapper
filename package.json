@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "gatsby": "^1.9.277",
-    "gatsby-link": "^1.6.46"
+    "gatsby-link": "^1.6.46",
+    "gatsby-source-mongodb": "^1.5.21"
   },
   "devDependencies": {
     "standard": "^10.0.2"
