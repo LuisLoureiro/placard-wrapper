@@ -1,6 +1,22 @@
 import React from 'react'
 
-export default ({ data }) => <div>{ JSON.stringify(data.allMongodbPlacardDevEvents.edges) }</div>
+import EventBets from './event-bets'
+import EventHeading from './event-heading'
+
+export default ({ data }) => (
+  <main>
+    <ol>
+      {
+        data.allMongodbPlacardDevEvents.edges.map(({ node }, idx) => (
+          <li key={idx}>
+            <EventHeading event={node} />
+            <EventBets betTypes={node.betTypes} />
+          </li>
+        ))
+      }
+    </ol>
+  </main>
+)
 
 export const query = graphql`
   query EventsListQuery($sport: String!, $country: String) {
@@ -14,6 +30,13 @@ export const query = graphql`
           sport
           country
           competition
+          betTypes {
+            name
+            options {
+              name
+              value
+            }
+          }
         }
       }
     }
