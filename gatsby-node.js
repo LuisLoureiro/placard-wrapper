@@ -19,27 +19,21 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       }
     `).then(result => {
       result.data.allMongodbPlacardDevSportsAndCountries.edges.forEach(({ node }) => {
-        const slug = `/${node.name}`
-
         createPage({
-          path: slug,
-          component: path.resolve(`./src/templates/events-list.js`),
+          path: `/${node.name}`,
+          component: path.resolve(`./src/pages/index.js`),
           context: {
             // Data passed to context is available in page queries as GraphQL variables.
-            slug,
             sport: node.name
           }
         })
 
         node.countries.forEach(country => {
-          const slug = `/${node.name}/${country.name}`
-
           createPage({
-            path: slug,
-            component: path.resolve(`./src/templates/events-list.js`),
+            path: `/${node.name}/${country.name}`,
+            component: path.resolve(`./src/pages/index.js`),
             context: {
               // Data passed to context is available in page queries as GraphQL variables.
-              slug,
               sport: node.name,
               country: country.name
             }
