@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default ({ event }) => (
-  <h3>
+  <h4>
     {
       `${event.code}
       - ${new Date(event.date * 1000).toLocaleString()}
@@ -10,5 +10,5 @@ export default ({ event }) => (
       - ${event.country}
       - ${event.competition}`
     }
-  </h3>
+  </h4>
 )

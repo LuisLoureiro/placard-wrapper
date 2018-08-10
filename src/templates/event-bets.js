@@ -1,7 +1,9 @@
 import React from 'react'
 
+import styles from './event-bets.module.styl'
+
 export default ({ betTypes }) => (
-  <table>
+  <table className={styles['bets-table']}>
     <tbody>
       {
         betTypes.map((betType, idx) => (
@@ -11,15 +13,17 @@ export default ({ betTypes }) => (
               {
                 betType.options.map((option, idx) => (
                   <table key={idx}>
-                    <tr>
-                      {
-                        option.map((nameValue, idx) => (
-                          <td key={idx}>
-                            <button type='button' title={nameValue.name}>{ nameValue.value }</button>
-                          </td>
-                        ))
-                      }
-                    </tr>
+                    <tbody>
+                      <tr>
+                        {
+                          option.map((nameValue, idx) => (
+                            <td key={idx}>
+                              <button type='button' title={nameValue.name}>{ nameValue.value }</button>
+                            </td>
+                          ))
+                        }
+                      </tr>
+                    </tbody>
                   </table>
                 ))
               }
