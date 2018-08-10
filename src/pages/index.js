@@ -3,12 +3,14 @@ import React from 'react'
 import EventBets from '../templates/event-bets'
 import EventHeading from '../templates/event-heading'
 
+import styles from './index.module.styl'
+
 export default ({ data }) => (
   <main>
-    <ol>
+    <ol className={styles['events-list']}>
       {
         data.allMongodbPlacardDevEvents.edges.map(({ node }, idx) => (
-          <li key={idx}>
+          <li key={idx} className={styles['event-item']}>
             <EventHeading event={node} />
             <EventBets betTypes={node.betTypes} />
           </li>
