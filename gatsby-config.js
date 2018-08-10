@@ -19,6 +19,9 @@ module.exports = {
         },
         collection: ['sportsAndCountries', 'events']
       }
+    },
+    {
+      resolve: 'gatsby-plugin-stylus'
     }
   ]
 }
