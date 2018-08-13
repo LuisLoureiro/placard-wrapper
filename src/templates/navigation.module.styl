@@ -12,6 +12,9 @@ inline()
 relative()
   position relative
 
+nowrap()
+  white-space nowrap
+
 
 .countries-list
   absolute()
@@ -30,10 +33,17 @@ relative()
   relative()
 
 .countries-list
+  black-background()
   pad-left(0)
 
 .sports-list
+  black-background()
   pad-left(0)
+  margin 0
 
-.nowrap
-  white-space nowrap
+.nav-link
+  color #FFF
+  text-decoration none
+  nowrap()
+  &.active
+    background-color #D4373E

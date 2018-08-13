@@ -12,7 +12,8 @@ export default ({ sports }) => (
             <h3>
               <NavLink
                 to={`/${node.name}`}
-                activeClassName='active'>
+                activeClassName={styles.active}
+                className={styles['nav-link']}>
                 { node.name }
               </NavLink>
             </h3>
@@ -23,8 +24,8 @@ export default ({ sports }) => (
                     <h3>
                       <NavLink
                         to={`/${node.name}/${country.name}`}
-                        activeClassName='active'
-                        className={styles.nowrap}>
+                        activeClassName={styles.active}
+                        className={styles['nav-link']}>
                         { country.name }
                       </NavLink>
                     </h3>
