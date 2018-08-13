@@ -22,15 +22,17 @@ nowrap()
 
 .country-item
 .sport-item
-  pad-lr(1em)
   unstyled()
   &:hover
-    ol
-      display block
+    > h3 .nav-link
+      background-color #D4373E
 
 .sport-item
   inline()
   relative()
+  &:hover
+    .countries-list
+      display block
 
 .countries-list
   black-background()
@@ -42,8 +44,13 @@ nowrap()
   margin 0
 
 .nav-link
+  display block
   color #FFF
   text-decoration none
+  pad(1em)
   nowrap()
   &.active
-    background-color #D4373E
+    background-color #EF3E45
+
+.no-margin
+  margin 0
