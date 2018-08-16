@@ -4,7 +4,17 @@
   pad-lr(1em)
 
 button
+  background $grey_brighter;
+  color $red_brighter
+  font-family inherit
+  font-size inherit
+  font-weight bold
+  letter-spacing 1px;
+  line-height 1.6
   border 0
+  min-width 4em
+  pad(0)
   cursor pointer
-  min-width 5em
-
+  outline($red, 2px)
+  &:active
+    background-color #FFF

@@ -1,9 +1,17 @@
 $grey = #E8E8E8
+$grey_brighter = #F9F9F9
 $red = #D4373E
 $red_brighter = #EF3E45
 
 black-background()
   background-color #000
+
+outline(colour, width)
+  &::-moz-focus-inner
+    border none
+  &:focus
+    outline colour auto width
+    outline-offset width*-1
 
 pad(value)
   padding value
