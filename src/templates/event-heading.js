@@ -1,5 +1,7 @@
 import React from 'react'
 
+import styles from './event-heading.module.styl'
+
 export default class EventHeading extends React.Component {
   constructor (props) {
     super(props)
@@ -18,9 +20,9 @@ export default class EventHeading extends React.Component {
 
     return (
       <h4>
+        <span className={styles.red}>{event.code}</span>
         {
-          `${event.code}
-          - ${this.state.dateDate}, ${this.state.dateTime}
+          ` - ${this.state.dateDate}, ${this.state.dateTime}
           - ${this.state.eventName}
           - ${event.sport}
           - ${event.country}
