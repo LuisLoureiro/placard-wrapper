@@ -44,5 +44,5 @@ function formatDate (date) {
 function formatTime (date) {
   const time = date.toLocaleTimeString()
   // Remove seconds from return string
-  return time.slice(0, time.lastIndexOf(':'))
+  return time.replace(/:00/, '')
 }
