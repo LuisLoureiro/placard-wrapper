@@ -6,7 +6,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMongodbPlacardDevSportsAndCountries {
+        allMongodbHerokuRvm7Q988SportsAndCountries {
           edges {
             node {
               name
@@ -18,7 +18,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
       }
     `).then(result => {
-      result.data.allMongodbPlacardDevSportsAndCountries.edges.forEach(({ node }) => {
+      result.data.allMongodbHerokuRvm7Q988SportsAndCountries.edges.forEach(({ node }) => {
         createPage({
           path: `/${node.name}`,
           component: path.resolve(`./src/pages/index.js`),

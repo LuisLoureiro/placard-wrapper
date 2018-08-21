@@ -9,7 +9,7 @@ export default ({ data }) => (
   <main>
     <ol className={styles['events-list']}>
       {
-        data.allMongodbPlacardDevEvents.edges.map(({ node }, idx) => (
+        data.allMongodbHerokuRvm7Q988Events.edges.map(({ node }, idx) => (
           <li key={idx} className={styles['event-item']}>
             <EventHeading event={node} />
             <EventBets betTypes={node.betTypes} />
@@ -22,7 +22,7 @@ export default ({ data }) => (
 
 export const query = graphql`
   query EventsListQuery($sport: String, $country: String) {
-    allMongodbPlacardDevEvents(
+    allMongodbHerokuRvm7Q988Events(
       filter: { sport: { eq: $sport }, country: { eq: $country } },
       sort: { fields: [date], order: ASC }
     ) {
