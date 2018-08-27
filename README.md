@@ -8,3 +8,9 @@ Before deploying app we must ensure that the following environment variables are
 * MONGODB_PORT = The port number of the MongoDB instance
 * MONGODB_USER = The user name for authentication
 * MONGODB_PASS = The password of the above user
+
+### Database name
+Database name was changed to the name of the one configured in Heroku.
+Tried to dynamically set it across source files, using an environment variable but couldn't do it because of the GraphQL queries.
+So, decided to change it statically in all files.
+* DB name = heroku_rvm7q988
