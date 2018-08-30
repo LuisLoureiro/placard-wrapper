@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import NavLink from 'gatsby-link'
 
 import styles from './navigation.module.styl'
 
