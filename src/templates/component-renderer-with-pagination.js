@@ -33,9 +33,11 @@ export default class ComponentRenderer extends React.Component {
   loadMore (event) {
     event.preventDefault()
 
-    this.setState({
-      pageResources: this.state.pageResources.concat(this.props.loader.getResourcesForPathname(event.target.pathname)),
-      pageNumber: this.state.pageNumber + 1
+    this.props.loader.getResourcesForPathname(event.target.pathname, newPageResources => {
+      this.setState({
+        pageResources: this.state.pageResources.concat(newPageResources),
+        pageNumber: this.state.pageNumber + 1
+      })
     })
   }
 
