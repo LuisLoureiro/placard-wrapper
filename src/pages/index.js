@@ -19,7 +19,7 @@ export default ({ data }) => (
 )
 
 export const query = graphql`
-  query EventsListQuery($sport: String, $country: String, $skip: Int = 0, $limit: Int = 20) {
+  query EventsListQuery($sport: String, $country: String, $skip: Int = 0, $limit: Int = 10) {
     allMongodbPlacardDevEvents(
       filter: { sport: { eq: $sport }, country: { eq: $country } },
       sort: { fields: [date], order: ASC },
