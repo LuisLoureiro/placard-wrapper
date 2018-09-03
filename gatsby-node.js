@@ -95,7 +95,7 @@ const getTotalCountQuery = (sport, country) => {
 
 const createPaginatedPages = (createPage) => {
   return (totalCount, path, template, context) => {
-    const pageSize = 20
+    const pageSize = 10
     const numberOfPages = Math.ceil(totalCount / pageSize)
 
     for (let pageNumber = 0; pageNumber < numberOfPages; pageNumber++) {
@@ -106,7 +106,8 @@ const createPaginatedPages = (createPage) => {
         context: Object.assign({
           // Data passed to context is available in page queries as GraphQL variables.
           limit: pageSize,
-          skip: pageNumber * pageSize
+          skip: pageNumber * pageSize,
+          numberOfPages
         }, context)
       })
     }
