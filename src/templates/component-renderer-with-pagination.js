@@ -55,11 +55,14 @@ export default class ComponentRenderer extends React.Component {
             React.createElement(pageResources.component, { ...pageResources.json, key: idx })
           )
         }
-        <Link to={this.loadMoreURL()}
-          style={{ display: this.showLoadMoreButton() ? 'block' : 'none' }}
-          onClick={this.loadMore}>
-          Carregar mais eventos
-        </Link>
+        {
+          this.showLoadMoreButton() ? (
+            <Link to={this.loadMoreURL()}
+              onClick={this.loadMore}>
+              Carregar mais eventos
+            </Link>
+          ) : null
+        }
       </main>
     )
   }
