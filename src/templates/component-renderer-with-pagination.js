@@ -23,7 +23,7 @@ export default class ComponentRenderer extends React.Component {
     } = props.pageResources.json
 
     return {
-      pageNumber: 1,
+      pageNumber: (pathContext.skip / pathContext.limit) + 1,
       pageResources: [props.pageResources],
       numberOfPages: pathContext.numberOfPages,
       url: buildPath(pathContext)
