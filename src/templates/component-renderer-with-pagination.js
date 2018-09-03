@@ -24,7 +24,7 @@ export default class ComponentRenderer extends React.Component {
 
     return {
       pageNumber: 1,
-      newPageResources: props.pageResources,
+      pageResources: props.pageResources,
       numberOfPages: pathContext.numberOfPages,
       url: buildPath(pathContext)
     }
@@ -34,7 +34,7 @@ export default class ComponentRenderer extends React.Component {
     event.preventDefault()
 
     this.setState({
-      newPageResources: this.getNewPageResourcesWithDataPrependedWithCurrentEvents(event.target.pathname),
+      pageResources: this.getNewPageResourcesWithDataPrependedWithCurrentEvents(event.target.pathname),
       pageNumber: this.state.pageNumber + 1
     })
   }
@@ -42,7 +42,7 @@ export default class ComponentRenderer extends React.Component {
   getNewPageResourcesWithDataPrependedWithCurrentEvents (pathname) {
     const newPageResources = this.props.loader.getResourcesForPathname(pathname)
     const newEvents = newPageResources.json.data.allMongodbPlacardDevEvents
-    const currentEvents = this.state.newPageResources.json.data.allMongodbPlacardDevEvents
+    const currentEvents = this.state.pageResources.json.data.allMongodbPlacardDevEvents
 
     newEvents.edges = currentEvents.edges.concat(newEvents.edges)
 
@@ -61,7 +61,7 @@ export default class ComponentRenderer extends React.Component {
     return (
       <main>
         {
-          React.createElement(this.state.newPageResources.component, this.state.newPageResources.json)
+          React.createElement(this.state.pageResources.component, this.state.pageResources.json)
         }
         <Link to={this.loadMoreURL()}
           style={{ display: this.showLoadMoreButton() ? 'block' : 'none' }}
