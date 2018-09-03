@@ -34,9 +34,19 @@ export default class ComponentRenderer extends React.Component {
     event.preventDefault()
 
     this.setState({
-      newPageResources: this.props.loader.getResourcesForPathname(event.target.pathname),
+      newPageResources: this.getNewPageResourcesWithDataPrependedWithCurrentEvents(event.target.pathname),
       pageNumber: this.state.pageNumber + 1
     })
+  }
+
+  getNewPageResourcesWithDataPrependedWithCurrentEvents (pathname) {
+    const newPageResources = this.props.loader.getResourcesForPathname(pathname)
+    const newEvents = newPageResources.json.data.allMongodbPlacardDevEvents
+    const currentEvents = this.state.newPageResources.json.data.allMongodbPlacardDevEvents
+
+    newEvents.edges = currentEvents.edges.concat(newEvents.edges)
+
+    return newPageResources
   }
 
   loadMoreURL () {
