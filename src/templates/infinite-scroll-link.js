@@ -10,38 +10,52 @@ export default class InfiniteScrollLink extends React.Component {
       rootMargin: '0px',
       threshold: 0.25
     }
+    const callback = props.callback || (() => {})
 
     this.observerCallback = this.observerCallback.bind(this)
-
-    this.state = {
-      observer: new window.IntersectionObserver(this.observerCallback(props.callback || (() => {})), observerOptions)
-    }
+    this.onClick = this.onClick.bind(this, callback)
+    this.observer = new window.IntersectionObserver(this.observerCallback(callback), observerOptions)
+    this.callbackCalls = 0
+    this.MAX_CALLBACK_CALLS = 3
   }
 
   componentDidMount () {
-    this.state.observer.observe(document.querySelector('#infinite-scroll-link'))
+    this.observer.observe(document.querySelector('#infinite-scroll-link'))
   }
 
   componentWillUnmount () {
-    if (this.state.observer.unobserve instanceof Function) {
-      this.state.observer.unobserve(document.querySelector('#infinite-scroll-link'))
+    if (this.observer.unobserve instanceof Function) {
+      this.observer.unobserve(document.querySelector('#infinite-scroll-link'))
     }
   }
 
   observerCallback (callback) {
     return (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          callback(this.props.url)
-        }
-      })
+      if (this.callbackCalls < this.MAX_CALLBACK_CALLS) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            callback(this.props.url)
+
+            this.callbackCalls += 1
+          }
+        })
+      }
     }
+  }
+
+  onClick (callback, event) {
+    event.preventDefault()
+
+    callback(this.props.url)
+
+    this.callbackCalls = 1
   }
 
   render () {
     return (
       <Link id='infinite-scroll-link'
-        to={this.props.url}>
+        to={this.props.url}
+        onClick={this.onClick}>
         { this.props.linkName }
       </Link>
     )
