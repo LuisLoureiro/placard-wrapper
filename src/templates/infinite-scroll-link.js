@@ -29,8 +29,12 @@ export default class InfiniteScrollLink extends React.Component {
   }
 
   observerCallback (callback) {
-    return () => {
-      return callback(this.props.url)
+    return (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          callback(this.props.url)
+        }
+      })
     }
   }
 
