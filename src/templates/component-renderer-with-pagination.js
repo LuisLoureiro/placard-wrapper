@@ -1,5 +1,6 @@
 import React from 'react'
-import Link from 'gatsby-link'
+
+import InfiniteScrollLink from './infinite-scroll-link'
 
 export default class ComponentRenderer extends React.Component {
   constructor (props) {
@@ -30,10 +31,8 @@ export default class ComponentRenderer extends React.Component {
     }
   }
 
-  loadMore (event) {
-    event.preventDefault()
-
-    this.props.loader.getResourcesForPathname(event.target.pathname, newPageResources => {
+  loadMore (pathname) {
+    this.props.loader.getResourcesForPathname(pathname, newPageResources => {
       this.setState({
         pageResources: this.state.pageResources.concat(newPageResources),
         pageNumber: this.state.pageNumber + 1
@@ -59,10 +58,10 @@ export default class ComponentRenderer extends React.Component {
         }
         {
           this.showLoadMoreButton() ? (
-            <Link to={this.loadMoreURL()}
-              onClick={this.loadMore}>
-              Carregar mais eventos
-            </Link>
+            <InfiniteScrollLink
+              url={this.loadMoreURL()}
+              callback={this.loadMore}
+              linkName='Carregar mais eventos' />
           ) : null
         }
       </main>
