@@ -2,7 +2,7 @@ const path = require(`path`)
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
-  const template = path.resolve('./src/pages/index.js')
+  const template = path.resolve('./src/templates/index.js')
 
   return new Promise((resolve) => {
     graphql(`
@@ -20,56 +20,64 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       }
     `).then(result => {
       Promise.all(
-        result.data.allMongodbPlacardDevSportsAndCountries.edges.map(({ node }) => {
-          return graphql(getTotalCountQuery(node.name))
+        result.data.allMongodbPlacardDevSportsAndCountries.edges.map(({ node }) => (
+          graphql(getTotalCountQuery(node.name))
             .then(result => ({
               totalCount: result.data.allMongodbPlacardDevEvents.totalCount,
               sport: node.name,
               countries: node.countries
             }))
-        }))
-        .then(sports => {
-          let promises = []
-
-          sports.forEach(sport => {
-            const {
-              totalCount,
-              sport: sportName,
-              countries
-            } = sport
-
-            createPaginatedPages(createPage)(totalCount, `/${sportName}`, template, {
-              sport: sportName
-            })
-
-            promises = promises.concat(countries.map(country => {
-              return graphql(getTotalCountQuery(sportName, country.name))
-                .then(result => ({
-                  totalCount: result.data.allMongodbPlacardDevEvents.totalCount,
-                  sport: sportName,
-                  country: country.name
-                }))
+        ))
+        .concat(
+          graphql(getTotalCountQuery())
+            .then(result => ({
+              totalCount: result.data.allMongodbPlacardDevEvents.totalCount,
+              sport: undefined,
+              countries: []
             }))
+        )
+      ).then(sports => {
+        let promises = []
+
+        sports.forEach(sport => {
+          const {
+            totalCount,
+            sport: sportName,
+            countries
+          } = sport
+
+          createPaginatedPages(createPage)(totalCount, `/${sportName}`, template, {
+            sport: sportName
           })
 
-          return Promise.all(promises)
+          promises = promises.concat(countries.map(country => {
+            return graphql(getTotalCountQuery(sportName, country.name))
+              .then(result => ({
+                totalCount: result.data.allMongodbPlacardDevEvents.totalCount,
+                sport: sportName,
+                country: country.name
+              }))
+          }))
         })
-        .then(countries => {
-          countries.forEach(country => {
-            const {
-              totalCount,
-              sport,
-              country: countryName
-            } = country
 
-            createPaginatedPages(createPage)(totalCount, `/${sport}/${countryName}`, template, {
-              sport,
-              country: countryName
-            })
+        return Promise.all(promises)
+      })
+      .then(countries => {
+        countries.forEach(country => {
+          const {
+            totalCount,
+            sport,
+            country: countryName
+          } = country
+
+          createPaginatedPages(createPage)(totalCount, `/${sport}/${countryName}`, template, {
+            sport,
+            country: countryName
           })
-
-          resolve()
         })
+
+        resolve()
+      })
     })
   })
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import EventBets from '../templates/event-bets'
-import EventHeading from '../templates/event-heading'
+import EventBets from './event-bets'
+import EventHeading from './event-heading'
 
 import styles from './index.module.styl'
 
