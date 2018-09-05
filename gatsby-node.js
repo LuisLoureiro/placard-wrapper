@@ -46,7 +46,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             countries
           } = sport
 
-          createPaginatedPages(createPage)(totalCount, `/${sportName}`, template, {
+          createPaginatedPages(createPage)(totalCount, `/${sportName || ''}`, template, {
             sport: sportName
           })
 
@@ -107,10 +107,18 @@ const createPaginatedPages = (createPage) => {
     const numberOfPages = Math.ceil(totalCount / pageSize)
 
     for (let pageNumber = 0; pageNumber < numberOfPages; pageNumber++) {
+      let layout = 'index'
+      let pathWithNumber = path
+
+      if (pageNumber) {
+        pathWithNumber += `${(!path.endsWith('/') ? '/' : '')}${pageNumber + 1}`
+        layout = 'clean'
+      }
+
       createPage({
-        path: `${path}${pageNumber ? `/${pageNumber + 1}` : ''}`,
+        path: pathWithNumber,
         component: template,
-        layout: pageNumber ? 'clean' : 'index',
+        layout,
         context: Object.assign({
           // Data passed to context is available in page queries as GraphQL variables.
           limit: pageSize,

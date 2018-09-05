@@ -70,5 +70,5 @@ export default class ComponentRenderer extends React.Component {
 }
 
 const buildPath = ({sport, country}) => {
-  return `/${sport || ''}${country ? `/${country}` : ''}`
+  return `${sport ? `/${sport}` : ''}${country ? `/${country}` : ''}`
 }
