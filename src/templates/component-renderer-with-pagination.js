@@ -8,7 +8,6 @@ export default class ComponentRenderer extends React.Component {
 
     this.state = this.buildStateObject(props)
     this.loadMore = this.loadMore.bind(this)
-    this.loadMoreURL = this.loadMoreURL.bind(this)
     this.showLoadMoreButton = this.showLoadMoreButton.bind(this)
   }
 
@@ -40,10 +39,6 @@ export default class ComponentRenderer extends React.Component {
     })
   }
 
-  loadMoreURL () {
-    return `${this.state.url}/${this.state.pageNumber + 1}`
-  }
-
   showLoadMoreButton () {
     return this.state.pageNumber < this.state.numberOfPages
   }
@@ -59,7 +54,8 @@ export default class ComponentRenderer extends React.Component {
         {
           this.showLoadMoreButton() ? (
             <InfiniteScrollLink
-              url={this.loadMoreURL()}
+              path={this.state.url}
+              pageNumber={this.state.pageNumber}
               callback={this.loadMore}
               linkName='Carregar mais eventos' />
           ) : null
