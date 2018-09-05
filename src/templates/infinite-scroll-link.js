@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
+import styles from './infinite-scrolling-link.module.styl'
+
 export default class InfiniteScrollLink extends React.Component {
   constructor (props) {
     super(props)
@@ -54,6 +56,7 @@ export default class InfiniteScrollLink extends React.Component {
   render () {
     return (
       <Link id='infinite-scroll-link'
+        className={styles['load-more-link']}
         to={this.props.url}
         onClick={this.onClick}>
         { this.props.linkName }
