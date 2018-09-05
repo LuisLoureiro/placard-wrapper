@@ -2,35 +2,28 @@ import React from 'react'
 
 import styles from './event-heading.module.styl'
 
-export default class EventHeading extends React.Component {
-  constructor (props) {
-    super(props)
+export default function EventHeading (props) {
+  const {
+    event
+  } = props
+  const date = new Date(event.date * 1000)
 
-    const date = new Date(props.event.date * 1000)
+  const dateDate = formatDate(date)
+  const dateTime = formatTime(date)
+  const eventName = `${event.home} X ${event.away}`
 
-    this.state = {
-      dateDate: formatDate(date),
-      dateTime: formatTime(date),
-      eventName: `${props.event.home} X ${props.event.away}`
-    }
-  }
-
-  render () {
-    const event = this.props.event
-
-    return (
-      <h4>
-        <span className={styles.red}>{event.code}</span>
-        {
-          ` - ${this.state.dateDate}, ${this.state.dateTime}
-          - ${this.state.eventName}
-          - ${event.sport}
-          - ${event.country}
-          - ${event.competition}`
-        }
-      </h4>
-    )
-  }
+  return (
+    <h4>
+      <span className={styles.red}>{event.code}</span>
+      {
+        ` - ${dateDate}, ${dateTime}
+        - ${eventName}
+        - ${event.sport}
+        - ${event.country}
+        - ${event.competition}`
+      }
+    </h4>
+  )
 }
 
 function formatDate (date) {
