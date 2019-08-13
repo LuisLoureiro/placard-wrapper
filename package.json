@@ -10,7 +10,7 @@
     "heroku-postbuild": "gatsby build"
   },
   "dependencies": {
-    "gatsby": "^1.9.277",
+    "gatsby": "^1.9.279",
     "gatsby-link": "^1.6.46",
     "gatsby-plugin-stylus": "^1.1.21",
     "gatsby-source-mongodb": "^1.5.22"
