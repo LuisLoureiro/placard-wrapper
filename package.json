@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "gatsby": "^2.18.17",
-    "gatsby-link": "^2.2.27",
     "gatsby-plugin-stylus": "^2.1.19",
     "gatsby-source-mongodb": "^2.1.27",
     "react": "^16.12.0",

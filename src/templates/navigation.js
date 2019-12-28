@@ -1,5 +1,5 @@
 import React from 'react'
-import NavLink from 'gatsby-link'
+import { NavLink } from 'gatsby'
 
 import styles from './navigation.module.styl'
 
