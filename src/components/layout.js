@@ -1,25 +1,30 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import Navigation from '../templates/navigation'
 
-export default ({ data, children }) => (
-  <div>
-    <Navigation sports={data.allMongodbPlacardDevSportsAndCountries.edges} />
-    {children}
-  </div>
-)
-
-export const query = graphql`
-  query NavigationQuery {
-    allMongodbPlacardDevSportsAndCountries {
-      edges {
-        node {
-          name
-          countries {
-            name
+export default ({ children }) => (
+  <StaticQuery
+    query={graphql`
+      query NavigationQuery {
+        allMongodbPlacardDevSportsAndCountries {
+          edges {
+            node {
+              name
+              countries {
+                name
+              }
+            }
           }
         }
       }
-    }
-  }
-`
+    `}
+    render={data => (
+      <div>
+        <Navigation
+          sports={data.allMongodbPlacardDevSportsAndCountries.edges}
+        />
+        {children}
+      </div>
+    )}
+  />
+)
