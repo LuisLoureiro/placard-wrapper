@@ -55,7 +55,7 @@ export default class InfiniteScrollLink extends React.Component {
     }
   }
 
-  onClick (callback, event) {
+  handleOnClick (callback, event) {
     event.preventDefault()
 
     callback(this.getURL())
@@ -73,7 +73,7 @@ export default class InfiniteScrollLink extends React.Component {
         id='infinite-scroll-link'
         className={styles.loadMoreLink}
         to={this.getURL()}
-        onClick={this.onClick}
+        onClick={this.handleOnClick}
       >
         {this.props.linkName}
       </Link>
