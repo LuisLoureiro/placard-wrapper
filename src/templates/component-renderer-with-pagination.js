@@ -19,14 +19,14 @@ export default class ComponentRenderer extends React.Component {
 
   buildStateObject (props) {
     const {
-      pathContext
+      pageContext
     } = props.pageResources.json
 
     return {
-      pageNumber: (pathContext.skip / pathContext.limit) + 1,
+      pageNumber: (pageContext.skip / pageContext.limit) + 1,
       pageResources: [props.pageResources],
-      numberOfPages: pathContext.numberOfPages,
-      url: buildPath(pathContext)
+      numberOfPages: pageContext.numberOfPages,
+      url: buildPath(pageContext)
     }
   }
 
