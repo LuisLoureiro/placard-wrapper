@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { graphql } from 'gatsby'
 import Navigation from '../templates/navigation'
 
 export default ({ data, children }) => (
