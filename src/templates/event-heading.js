@@ -3,9 +3,7 @@ import React from 'react'
 import styles from './event-heading.module.styl'
 
 export default function EventHeading (props) {
-  const {
-    event
-  } = props
+  const { event } = props
   const date = new Date(event.date * 1000)
 
   const dateDate = formatDate(date)
@@ -15,13 +13,11 @@ export default function EventHeading (props) {
   return (
     <h4>
       <span className={styles.red}>{event.code}</span>
-      {
-        ` - ${dateDate}, ${dateTime}
+      {` - ${dateDate}, ${dateTime}
         - ${eventName}
         - ${event.sport}
         - ${event.country}
-        - ${event.competition}`
-      }
+        - ${event.competition}`}
     </h4>
   )
 }
@@ -29,9 +25,11 @@ export default function EventHeading (props) {
 function formatDate (date) {
   const now = new Date()
 
-  return date.getDate() === now.getDate() ? 'Hoje'
-    : date.getDate() === (now.getDate() + 1) ? 'Amanhã'
-    : date.toLocaleDateString()
+  return date.getDate() === now.getDate()
+    ? 'Hoje'
+    : date.getDate() === now.getDate() + 1
+      ? 'Amanhã'
+      : date.toLocaleDateString()
 }
 
 function formatTime (date) {

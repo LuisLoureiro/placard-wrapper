@@ -18,12 +18,10 @@ export default class ComponentRenderer extends React.Component {
   }
 
   buildStateObject (props) {
-    const {
-      pageContext
-    } = props.pageResources.json
+    const { pageContext } = props.pageResources.json
 
     return {
-      pageNumber: (pageContext.skip / pageContext.limit) + 1,
+      pageNumber: pageContext.skip / pageContext.limit + 1,
       pageResources: [props.pageResources],
       numberOfPages: pageContext.numberOfPages,
       url: buildPath(pageContext)
@@ -46,25 +44,25 @@ export default class ComponentRenderer extends React.Component {
   render () {
     return (
       <main>
-        {
-          this.state.pageResources.map((pageResources, idx) =>
-            React.createElement(pageResources.component, { ...pageResources.json, key: idx })
-          )
-        }
-        {
-          this.showLoadMoreButton() ? (
-            <InfiniteScrollLink
-              path={this.state.url}
-              pageNumber={this.state.pageNumber}
-              callback={this.loadMore}
-              linkName='Carregar mais eventos' />
-          ) : null
-        }
+        {this.state.pageResources.map((pageResources, idx) =>
+          React.createElement(pageResources.component, {
+            ...pageResources.json,
+            key: idx
+          })
+        )}
+        {this.showLoadMoreButton() ? (
+          <InfiniteScrollLink
+            path={this.state.url}
+            pageNumber={this.state.pageNumber}
+            callback={this.loadMore}
+            linkName='Carregar mais eventos'
+          />
+        ) : null}
       </main>
     )
   }
 }
 
-const buildPath = ({sport, country}) => {
+const buildPath = ({ sport, country }) => {
   return `${sport ? `/${sport}` : ''}${country ? `/${country}` : ''}`
 }
