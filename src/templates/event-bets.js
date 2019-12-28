@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './event-bets.module.styl'
 
 export default ({ betTypes }) => (
-  <table className={styles['bets-table']}>
+  <table className={styles.betsTable}>
     <tbody>
       {
         betTypes.map((betType, idx) => (

@@ -7,9 +7,9 @@ import EventHeading from './event-heading'
 import styles from './index.module.styl'
 
 export default ({ data }) => (
-  <ol className={styles['events-list']}>
+  <ol className={styles.eventsList}>
     {data.allMongodbPlacardDevEvents.edges.map(({ node }, idx) => (
-      <li key={idx} className={styles['event-item']}>
+      <li key={idx} className={styles.eventItem}>
         <EventHeading event={node} />
         <EventBets betTypes={node.betTypes} />
       </li>

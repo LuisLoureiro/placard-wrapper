@@ -67,7 +67,7 @@ export default class InfiniteScrollLink extends React.Component {
   render () {
     return (
       <Link id='infinite-scroll-link'
-        className={styles['load-more-link']}
+        className={styles.loadMoreLink}
         to={this.getURL()}
         onClick={this.onClick}>
         { this.props.linkName }
