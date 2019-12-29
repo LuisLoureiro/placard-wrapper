@@ -1,8 +1,10 @@
 const path = require('path')
 
+const templateClean = path.resolve('./src/templates/events-clean.js')
+const template = path.resolve('./src/templates/events.js')
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  const template = path.resolve('./src/templates/index.js')
 
   return new Promise(resolve => {
     graphql(`
@@ -45,7 +47,6 @@ exports.createPages = ({ graphql, actions }) => {
             createPaginatedPages(createPage)(
               totalCount,
               `/${sportName || ''}`,
-              template,
               {
                 sport: sportName
               }
@@ -73,7 +74,6 @@ exports.createPages = ({ graphql, actions }) => {
             createPaginatedPages(createPage)(
               totalCount,
               `/${sport}/${countryName}`,
-              template,
               {
                 sport,
                 country: countryName
@@ -107,23 +107,22 @@ const getTotalCountQuery = (sport, country) => {
 }
 
 const createPaginatedPages = createPage => {
-  return (totalCount, path, template, context) => {
+  return (totalCount, path, context) => {
     const pageSize = 10
     const numberOfPages = Math.ceil(totalCount / pageSize)
 
     for (let pageNumber = 0; pageNumber < numberOfPages; pageNumber++) {
-      let layout = 'index'
+      let withLayout = true
       let pathWithNumber = path
 
       if (pageNumber) {
         pathWithNumber += `${!path.endsWith('/') ? '/' : ''}${pageNumber + 1}`
-        layout = 'clean'
+        withLayout = false
       }
 
       createPage({
         path: pathWithNumber,
-        component: template,
-        layout,
+        component: withLayout ? template : templateClean,
         context: Object.assign(
           {
             // Data passed to context is available in page queries as GraphQL variables.

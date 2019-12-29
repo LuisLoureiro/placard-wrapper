@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Navigation from '../templates/navigation'
+import Navigation from '../components/navigation'
 
 export default ({ children }) => (
   <StaticQuery
