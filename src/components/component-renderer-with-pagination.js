@@ -28,12 +28,11 @@ export default class ComponentRenderer extends React.Component {
     }
   }
 
-  loadMore (pathname) {
-    this.props.loader.getResourcesForPathname(pathname, newPageResources => {
-      this.setState({
-        pageResources: this.state.pageResources.concat(newPageResources),
-        pageNumber: this.state.pageNumber + 1
-      })
+  async loadMore (pathname) {
+    const newPageResources = await this.props.loader.loadPage(pathname)
+    this.setState({
+      pageResources: this.state.pageResources.concat(newPageResources),
+      pageNumber: this.state.pageNumber + 1
     })
   }
 
