@@ -15,7 +15,7 @@ export default class InfiniteScrollLink extends React.Component {
     const callback = props.callback || (() => {})
 
     this.observerCallback = this.observerCallback.bind(this)
-    this.onClick = this.onClick.bind(this, callback)
+    this.handleOnClick = this.handleOnClick.bind(this, callback)
     this.getURL = this.getURL.bind(this)
     this.observer = new window.IntersectionObserver(
       this.observerCallback(callback),
