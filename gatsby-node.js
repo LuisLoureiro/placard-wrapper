@@ -110,6 +110,14 @@ const createPaginatedPages = createPage => {
   return (totalCount, path, context) => {
     const pageSize = 10
     const numberOfPages = Math.ceil(totalCount / pageSize)
+    const filter = {}
+
+    if (context.sport) {
+      filter.sport = { eq: context.sport }
+    }
+    if (context.country) {
+      filter.country = { eq: context.country }
+    }
 
     for (let pageNumber = 0; pageNumber < numberOfPages; pageNumber++) {
       let withLayout = true
@@ -123,15 +131,13 @@ const createPaginatedPages = createPage => {
       createPage({
         path: pathWithNumber,
         component: withLayout ? template : templateClean,
-        context: Object.assign(
-          {
-            // Data passed to context is available in page queries as GraphQL variables.
-            limit: pageSize,
-            skip: pageNumber * pageSize,
-            numberOfPages
-          },
-          context
-        )
+        context: {
+          // Data passed to context is available in page queries as GraphQL variables.
+          limit: pageSize,
+          skip: pageNumber * pageSize,
+          filter,
+          numberOfPages
+        }
       })
     }
   }

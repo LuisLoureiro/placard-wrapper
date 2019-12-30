@@ -11,9 +11,9 @@ export default ({ data }) => (
 )
 
 export const query = graphql`
-  query($sport: String, $country: String, $skip: Int = 0, $limit: Int = 10) {
+  query($filter: mongodbPlacard_devEventsFilterInput, $skip: Int = 0, $limit: Int = 10) {
     allMongodbPlacardDevEvents(
-      filter: { sport: { eq: $sport }, country: { eq: $country } }
+      filter: $filter
       sort: { fields: [date], order: ASC }
       skip: $skip
       limit: $limit

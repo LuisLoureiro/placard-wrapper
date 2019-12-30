@@ -61,10 +61,10 @@ const buildStateObject = props => {
     pageNumber: pageContext.skip / pageContext.limit + 1,
     pageResources: [props.pageResources],
     numberOfPages: pageContext.numberOfPages,
-    url: buildPath(pageContext)
+    url: buildPath(pageContext.filter)
   }
 }
 
 const buildPath = ({ sport, country }) => {
-  return `${sport ? `/${sport}` : ''}${country ? `/${country}` : ''}`
+  return `${sport ? `/${sport.eq}` : ''}${country ? `/${country.eq}` : ''}`
 }
