@@ -17,7 +17,8 @@ module.exports = {
           user: process.env.MONGODB_USER,
           password: process.env.MONGODB_PASS
         },
-        collection: ['sportsAndCountries', 'events']
+        collection: ['sportsAndCountries', 'events'],
+        clientOptions: { useUnifiedTopology: true }
       }
     },
     {

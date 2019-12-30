@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 import styles from './infinite-scrolling-link.module.styl'
 
@@ -15,9 +15,12 @@ export default class InfiniteScrollLink extends React.Component {
     const callback = props.callback || (() => {})
 
     this.observerCallback = this.observerCallback.bind(this)
-    this.onClick = this.onClick.bind(this, callback)
+    this.handleOnClick = this.handleOnClick.bind(this, callback)
     this.getURL = this.getURL.bind(this)
-    this.observer = new window.IntersectionObserver(this.observerCallback(callback), observerOptions)
+    this.observer = new window.IntersectionObserver(
+      this.observerCallback(callback),
+      observerOptions
+    )
     this.callbackCalls = 0
     this.MAX_CALLBACK_CALLS = 3
   }
@@ -32,14 +35,14 @@ export default class InfiniteScrollLink extends React.Component {
     }
   }
 
-  componentWillReceiveProps (newProps) {
+  componentDidUpdate (newProps) {
     if (this.props.path !== newProps.path) {
       this.callbackCalls = 0
     }
   }
 
   observerCallback (callback) {
-    return (entries) => {
+    return entries => {
       if (this.callbackCalls < this.MAX_CALLBACK_CALLS) {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -52,7 +55,7 @@ export default class InfiniteScrollLink extends React.Component {
     }
   }
 
-  onClick (callback, event) {
+  handleOnClick (callback, event) {
     event.preventDefault()
 
     callback(this.getURL())
@@ -66,11 +69,13 @@ export default class InfiniteScrollLink extends React.Component {
 
   render () {
     return (
-      <Link id='infinite-scroll-link'
-        className={styles['load-more-link']}
+      <Link
+        id='infinite-scroll-link'
+        className={styles.loadMoreLink}
         to={this.getURL()}
-        onClick={this.onClick}>
-        { this.props.linkName }
+        onClick={this.handleOnClick}
+      >
+        {this.props.linkName}
       </Link>
     )
   }
