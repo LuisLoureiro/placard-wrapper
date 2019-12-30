@@ -35,7 +35,7 @@ export default class InfiniteScrollLink extends React.Component {
     }
   }
 
-  componentWillReceiveProps (newProps) {
+  componentDidUpdate (newProps) {
     if (this.props.path !== newProps.path) {
       this.callbackCalls = 0
     }

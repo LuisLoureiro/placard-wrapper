@@ -6,26 +6,17 @@ export default class ComponentRenderer extends React.Component {
   constructor (props) {
     super(props)
 
-    this.state = this.buildStateObject(props)
+    this.state = buildStateObject(props)
     this.loadMore = this.loadMore.bind(this)
     this.showLoadMoreButton = this.showLoadMoreButton.bind(this)
   }
 
-  componentWillReceiveProps (newProps) {
-    if (this.props.location.key !== newProps.location.key) {
-      this.setState(this.buildStateObject(newProps))
+  static getDerivedStateFromProps (props, state) {
+    if (props.location.key !== state.currentLocationKey) {
+      return buildStateObject(props)
     }
-  }
 
-  buildStateObject (props) {
-    const { pageContext } = props.pageResources.json
-
-    return {
-      pageNumber: pageContext.skip / pageContext.limit + 1,
-      pageResources: [props.pageResources],
-      numberOfPages: pageContext.numberOfPages,
-      url: buildPath(pageContext)
-    }
+    return null
   }
 
   async loadMore (pathname) {
@@ -59,6 +50,18 @@ export default class ComponentRenderer extends React.Component {
         ) : null}
       </main>
     )
+  }
+}
+
+const buildStateObject = props => {
+  const { pageContext } = props.pageResources.json
+
+  return {
+    currentLocationKey: props.location.key,
+    pageNumber: pageContext.skip / pageContext.limit + 1,
+    pageResources: [props.pageResources],
+    numberOfPages: pageContext.numberOfPages,
+    url: buildPath(pageContext)
   }
 }
 
