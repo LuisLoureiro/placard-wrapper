@@ -1,17 +1,28 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layout'
-import EventsComponent from '../components/events'
+import EventBets from '../components/event-bets'
+import EventHeading from '../components/event-heading'
+
+import styles from './events.module.styl'
 
 export default ({ data }) => (
-  <Layout>
-    <EventsComponent events={data.allMongodbPlacardDevEvents.edges} />
-  </Layout>
+  <ol className={styles.eventsList}>
+    {data.allMongodbPlacardDevEvents.edges.map(({ node }, idx) => (
+      <li key={idx} className={styles.eventItem}>
+        <EventHeading event={node} />
+        <EventBets betTypes={node.betTypes} />
+      </li>
+    ))}
+  </ol>
 )
 
 export const query = graphql`
-  query($filter: mongodbPlacard_devEventsFilterInput, $skip: Int = 0, $limit: Int = 10) {
+  query(
+    $filter: mongodbPlacard_devEventsFilterInput
+    $skip: Int = 0
+    $limit: Int = 10
+  ) {
     allMongodbPlacardDevEvents(
       filter: $filter
       sort: { fields: [date], order: ASC }
