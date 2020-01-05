@@ -19,12 +19,12 @@ export default ({ children }) => (
       }
     `}
     render={data => (
-      <div>
+      <>
         <Navigation
           sports={data.allMongodbPlacardDevSportsAndCountries.edges}
         />
         {children}
-      </div>
+      </>
     )}
   />
 )
