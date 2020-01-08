@@ -14,13 +14,38 @@ export default ({ betting = [] }) => (
       </tr>
     </thead>
     <tbody>
+      {betting.map(bet => (
+        <tr key>
+          <td>
+            <p className={style.bold}>
+              <small>{bet.code}</small>
+              <small>
+                {bet.home} X {bet.away}
+              </small>
+            </p>
+            <p className={style.alignCenter}>
+              <small>
+                <u>{bet.name}</u>
+              </small>
+              <span>{bet.odd.name}</span>
+              <span className={style.bold}>{bet.odd.value}</span>
+            </p>
+          </td>
+          <td className={style.alignCenter}>
+            <button>x</button>
+          </td>
+        </tr>
+      ))}
     </tbody>
     <tfoot>
       <tr>
         <td colSpan='2'>
           <button>Limpar</button>
           <span className={style.toRight}>
-            Total:<span className={style.bold}>0</span>
+            Total:
+            <span className={style.bold}>
+              {betting.reduce((prev, curr) => prev + curr.odd, 0)}
+            </span>
           </span>
         </td>
       </tr>
