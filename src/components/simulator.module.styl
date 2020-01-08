@@ -1,0 +1,56 @@
+@import 'mixins'
+
+.simulator
+  border-spacing: 0
+
+  &.minimized
+    > :not(thead)
+      display: none
+
+  button
+    background-color: transparent
+    border: 0
+    color: inherit
+    cursor: pointer
+    font-family: inherit
+    font-weight: inherit
+    outline(none, 0)
+    padding: 0
+    line-height: 1.2
+    &:active
+      background-color: transparent
+
+  thead
+    background-color: #FFF
+    color: $red_brighter
+
+    button
+      font-size: 1.25em
+      font-weight: normal
+      pad(0.5em)
+      width: 100%
+
+      :first-child
+        padding-right: 1em;
+
+  tbody
+    background-color: $red_brighter
+    color: #FFF
+
+  tfoot
+    background-color: $red
+    color: #FFF
+    tr > *
+      pad(0.5em)
+
+.to.left
+  float: left
+
+.to-right
+  float: right
+
+.rotate-315
+  transform: rotate(315deg)
+
+.bold
+  font-weight: 700
