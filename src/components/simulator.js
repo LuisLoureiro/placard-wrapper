@@ -1,7 +1,11 @@
 import React from 'react'
 import style from './simulator.module.styl'
 
-export default ({ betting = [] }) => (
+export default ({
+  selectedBets = [],
+  onSelectedBetsCleared = () => {},
+  onSelectedBetRemoved = () => {}
+}) => (
   <table className={`${style.simulator} ${style.minimized}`}>
     <thead>
       <tr>
@@ -14,7 +18,7 @@ export default ({ betting = [] }) => (
       </tr>
     </thead>
     <tbody>
-      {betting.map(bet => (
+      {selectedBets.map(bet => (
         <tr key>
           <td>
             <p className={style.bold}>
@@ -32,7 +36,7 @@ export default ({ betting = [] }) => (
             </p>
           </td>
           <td className={style.alignCenter}>
-            <button>x</button>
+            <button onClick={() => onSelectedBetRemoved(bet)}>X</button>
           </td>
         </tr>
       ))}
@@ -40,11 +44,11 @@ export default ({ betting = [] }) => (
     <tfoot>
       <tr>
         <td colSpan='2'>
-          <button>Limpar</button>
+          <button onClick={onSelectedBetsCleared}>Limpar</button>
           <span className={style.toRight}>
             Total:
             <span className={style.bold}>
-              {betting.reduce((prev, curr) => prev + curr.odd, 0)}
+              {selectedBets.reduce((prev, curr) => prev + curr.odd.value, 0)}
             </span>
           </span>
         </td>
