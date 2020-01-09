@@ -1,4 +1,4 @@
-@import 'mixins'
+@require 'mixins'
 
 .simulator
   border-spacing: 0
@@ -12,13 +12,10 @@
     border: 0
     color: inherit
     cursor: pointer
-    font-family: inherit
-    font-weight: inherit
-    outline(none, 0)
+    font: inherit
+    letter-spacing 1px
+    outline(null, 0px)
     padding: 0
-    line-height: 1.2
-    &:active
-      background-color: transparent
 
   thead
     background-color: #FFF
@@ -27,7 +24,7 @@
     button
       font-size: 1.25em
       font-weight: normal
-      pad(0.5em)
+      pad(1rem)
       width: 100%
 
       :first-child
@@ -36,14 +33,23 @@
   tbody
     background-color: $red_brighter
     color: #FFF
+    td
+      pad(0.5em)
+      p
+        margin: 0
+        &:first-child
+          color: #000
+        :not(:last-child)
+          &::after
+            content: ' - '
 
   tfoot
     background-color: $red
     color: #FFF
-    tr > *
-      pad(0.5em)
+    tr > td
+      pad(1rem)
 
-.to.left
+.to-left
   float: left
 
 .to-right
