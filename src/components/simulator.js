@@ -38,28 +38,11 @@ class Simulator extends React.Component {
         </thead>
         <tbody>
           {this.props.selectedBets.map(bet => (
-            <tr key>
-              <td>
-                <p className={style.bold}>
-                  <small>{bet.code}</small>
-                  <small>
-                    {bet.home} X {bet.away}
-                  </small>
-                </p>
-                <p className={style.alignCenter}>
-                  <small>
-                    <u>{bet.name}</u>
-                  </small>
-                  <span>{bet.odd.name}</span>
-                  <span className={style.bold}>{bet.odd.value}</span>
-                </p>
-              </td>
-              <td className={style.alignCenter}>
-                <button onClick={() => this.props.onSelectedBetRemoved(bet)}>
-                  X
-                </button>
-              </td>
-            </tr>
+            <SelectedBetRow
+              key={bet.code}
+              onRemoveHandler={() => this.props.onSelectedBetRemoved(bet)}
+              {...bet}
+            />
           ))}
         </tbody>
         <tfoot>
@@ -91,3 +74,28 @@ Simulator.defaultProps = {
 }
 
 export default Simulator
+
+function SelectedBetRow ({ code, home, away, name, odd, onRemoveHandler }) {
+  return (
+    <tr key>
+      <td>
+        <p className={style.bold}>
+          <small>{code}</small>
+          <small>
+            {home} X {away}
+          </small>
+        </p>
+        <p className={style.alignCenter}>
+          <small>
+            <u>{name}</u>
+          </small>
+          <span>{odd.name}</span>
+          <span className={style.bold}>{odd.value}</span>
+        </p>
+      </td>
+      <td className={style.alignCenter}>
+        <button onClick={onRemoveHandler}>X</button>
+      </td>
+    </tr>
+  )
+}
