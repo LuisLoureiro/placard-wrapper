@@ -23,7 +23,7 @@ class Simulator extends React.Component {
         <thead>
           <tr>
             <th colSpan='2'>
-              <button onClick={this.handleChangedMinimized}>
+              <button type='button' onClick={this.handleChangedMinimized}>
                 <span className={style.toLeft}>SIMULADOR</span>
                 <span
                   className={`${
@@ -48,14 +48,13 @@ class Simulator extends React.Component {
         <tfoot>
           <tr>
             <td colSpan='2'>
-              <button onClick={this.props.onSelectedBetsCleared}>Limpar</button>
+              <button type='button' onClick={this.props.onSelectedBetsCleared}>
+                Limpar
+              </button>
               <span className={style.toRight}>
                 Total:
                 <span className={style.bold}>
-                  {this.props.selectedBets.reduce(
-                    (prev, curr) => prev + curr.odd.value,
-                    0
-                  )}
+                  {calculateTotalValue(this.props.selectedBets)}
                 </span>
               </span>
             </td>
@@ -94,8 +93,25 @@ function SelectedBetRow ({ code, home, away, name, odd, onRemoveHandler }) {
         </p>
       </td>
       <td className={style.alignCenter}>
-        <button onClick={onRemoveHandler}>X</button>
+        <button type='button' onClick={onRemoveHandler}>
+          X
+        </button>
       </td>
     </tr>
   )
+}
+
+function calculateTotalValue (valuesArray) {
+  return valuesArray.length
+    ? `${roundValue(
+        valuesArray.reduce(
+          (prev, curr) => prev * +curr.odd.value.replace(',', '.'),
+          1
+        )
+      )}`.replace('.', ',')
+    : 0
+}
+
+function roundValue (value) {
+  return (Math.round(value * 100) / 100).toFixed(2)
 }
