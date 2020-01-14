@@ -10,6 +10,7 @@ class EventListenerSimulator extends React.Component {
       selectedBets: []
     }
     this.handleOnSelectedBetsCleared = this.handleOnSelectedBetsCleared.bind(this)
+    this.handleOnSelectedBetRemoved = this.handleOnSelectedBetRemoved.bind(this)
   }
 
   componentDidMount () {
@@ -40,11 +41,24 @@ class EventListenerSimulator extends React.Component {
     })
   }
 
+  handleOnSelectedBetRemoved (betToRemove) {
+    const filteredSelectedBets = this.state.selectedBets.filter(
+      bet => bet.code !== betToRemove.code
+    )
+
+    if (filteredSelectedBets.length < this.state.selectedBets.length) {
+      this.setState({
+        selectedBets: filteredSelectedBets
+      })
+    }
+  }
+
   render () {
     return (
       <Simulator
         selectedBets={this.state.selectedBets}
         onSelectedBetsCleared={this.handleOnSelectedBetsCleared}
+        onSelectedBetRemoved={this.handleOnSelectedBetRemoved}
       />
     )
   }
