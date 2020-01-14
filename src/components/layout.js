@@ -1,6 +1,8 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Navigation from '../components/navigation'
+
+import Navigation from './navigation'
+import EventListenerSimulator from './event-listener-simulator'
 
 export default ({ children }) => (
   <StaticQuery
@@ -24,6 +26,7 @@ export default ({ children }) => (
           sports={data.allMongodbPlacardDevSportsAndCountries.edges}
         />
         {children}
+          <EventListenerSimulator eventName='odd-selected' />
       </>
     )}
   />
