@@ -9,6 +9,7 @@ class EventListenerSimulator extends React.Component {
       eventName: props.eventName,
       selectedBets: []
     }
+    this.handleOnSelectedBetsCleared = this.handleOnSelectedBetsCleared.bind(this)
   }
 
   componentDidMount () {
@@ -33,9 +34,18 @@ class EventListenerSimulator extends React.Component {
     }
   }
 
+  handleOnSelectedBetsCleared () {
+    this.setState({
+      selectedBets: []
+    })
+  }
+
   render () {
     return (
-      <Simulator selectedBets={this.state.selectedBets} />
+      <Simulator
+        selectedBets={this.state.selectedBets}
+        onSelectedBetsCleared={this.handleOnSelectedBetsCleared}
+      />
     )
   }
 }
