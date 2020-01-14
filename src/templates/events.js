@@ -10,12 +10,37 @@ export default ({ data }) => (
   <ol className={styles.eventsList}>
     {data.allMongodbPlacardDevEvents.edges.map(({ node }, idx) => (
       <li key={idx} className={styles.eventItem}>
-        <EventHeading event={node} />
-        <EventBets betTypes={node.betTypes} />
+        <EventBlock event={node} />
       </li>
     ))}
   </ol>
 )
+
+function EventBlock ({ event }) {
+  return (
+    <>
+      <EventHeading event={event} />
+      <EventBets
+        betTypes={event.betTypes}
+        optionClickHandler={handleButtonClick(event)}
+      />
+    </>
+  )
+}
+
+function handleButtonClick (eventObj) {
+  return ({ betTypeName, oddName, oddValue }) => () => {
+    const customEvent = new window.CustomEvent('odd-selected', {
+      detail: {
+        event: Object.assign({}, eventObj),
+        betType: betTypeName,
+        odd: { name: oddName, value: oddValue }
+      }
+    })
+
+    window.dispatchEvent(customEvent)
+  }
+}
 
 export const query = graphql`
   query(
