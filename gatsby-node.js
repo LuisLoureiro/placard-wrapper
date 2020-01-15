@@ -1,6 +1,5 @@
 const path = require('path')
 
-const templateClean = path.resolve('./src/templates/events-clean.js')
 const template = path.resolve('./src/templates/events.js')
 
 exports.createPages = ({ graphql, actions }) => {
@@ -120,17 +119,15 @@ const createPaginatedPages = createPage => {
     }
 
     for (let pageNumber = 0; pageNumber < numberOfPages; pageNumber++) {
-      let withLayout = true
       let pathWithNumber = path
 
       if (pageNumber) {
         pathWithNumber += `${!path.endsWith('/') ? '/' : ''}${pageNumber + 1}`
-        withLayout = false
       }
 
       createPage({
         path: pathWithNumber,
-        component: withLayout ? template : templateClean,
+        component: template,
         context: {
           // Data passed to context is available in page queries as GraphQL variables.
           limit: pageSize,

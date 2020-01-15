@@ -1,0 +1,65 @@
+@require 'mixins'
+
+.simulator
+  border-spacing: 0
+
+  &.minimized
+    > :not(thead)
+      display: none
+
+  button
+    background-color: transparent
+    border: 0
+    color: inherit
+    cursor: pointer
+    font: inherit
+    letter-spacing 1px
+    outline(null, 0px)
+    padding: 0
+
+  thead
+    background-color: #FFF
+    color: $red_brighter
+
+    button
+      font-size: 1.25em
+      font-weight: normal
+      pad(1rem)
+      width: 100%
+
+      :first-child
+        padding-right: 1em;
+
+  tbody
+    background-color: $red_brighter
+    color: #FFF
+    td
+      pad(0.5em)
+      p
+        margin: 0
+        &:first-child
+          color: #000
+        :not(:last-child)
+          &::after
+            content: ' - '
+
+  tfoot
+    background-color: $red
+    color: #FFF
+    tr > td
+      pad(1rem)
+
+.to-left
+  float: left
+
+.to-right
+  float: right
+
+.rotate-225
+  transform: rotate(225deg)
+
+.rotate-315
+  transform: rotate(315deg)
+
+.bold
+  font-weight: 700

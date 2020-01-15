@@ -1,6 +1,9 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Navigation from '../components/navigation'
+
+import Navigation from './navigation'
+import EventListenerSimulator from './event-listener-simulator'
+import styles from './layout.module.styl'
 
 export default ({ children }) => (
   <StaticQuery
@@ -19,12 +22,15 @@ export default ({ children }) => (
       }
     `}
     render={data => (
-      <div>
+      <>
         <Navigation
           sports={data.allMongodbHerokuRvm7Q988SportsAndCountries.edges}
         />
         {children}
-      </div>
+        <section className={styles.simulator}>
+          <EventListenerSimulator eventName='odd-selected' />
+        </section>
+      </>
     )}
   />
 )

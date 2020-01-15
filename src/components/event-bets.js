@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './event-bets.module.styl'
 
-export default ({ betTypes }) => (
+export default ({ betTypes, optionClickHandler = () => {} }) => (
   <table className={styles.betsTable}>
     <tbody>
       {betTypes.map((betType, idx) => (
@@ -15,7 +15,15 @@ export default ({ betTypes }) => (
                   <tr>
                     {option.map((nameValue, idx) => (
                       <td key={idx}>
-                        <button type='button' title={nameValue.name}>
+                        <button
+                          type='button'
+                          title={nameValue.name}
+                          onClick={optionClickHandler({
+                            betTypeName: betType.name,
+                            oddName: nameValue.name,
+                            oddValue: nameValue.value
+                          })}
+                        >
                           {nameValue.value}
                         </button>
                       </td>

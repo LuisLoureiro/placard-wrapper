@@ -1,7 +1,7 @@
 {
   "name": "placard-wrapper",
   "description": "A wrapper of Placard, a Portuguese online gambling system. The idea of this application is to provide a better user-experience.",
-  "version": "5.1.0",
+  "version": "5.3.0",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
