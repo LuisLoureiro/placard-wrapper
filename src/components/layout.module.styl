@@ -1,7 +1,16 @@
 .simulator
-  position: fixed
-  bottom: 0
   margin-left: 1em
+  margin-right: 1em
   max-height: 100%
   overflow-y: auto
-  right: 1em
+
+.fixed
+  position: fixed
+
+  &.top-right
+    top: 0
+    right: 0
+  &.bottom-right
+    bottom: 0
+    right: 0
+

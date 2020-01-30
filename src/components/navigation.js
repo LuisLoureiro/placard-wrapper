@@ -26,26 +26,24 @@ const isPartiallyActive = ({ location, href }) => {
 const PartialNavLink = props => <Link getProps={isPartiallyActive} {...props} />
 
 export default ({ sports }) => (
-  <nav>
-    <ol className={`${styles.sportsList}`}>
-      {sports.map(({ node }, idx) => (
-        <li key={idx} className={`${styles.sportItem}`}>
-          <h3 className={styles.noMargin}>
-            <PartialNavLink to={`/${node.name}`}>{node.name}</PartialNavLink>
-          </h3>
-          <ol className={`${styles.countriesList}`}>
-            {node.countries.map((country, idx) => (
-              <li key={idx} className={`${styles.countryItem}`}>
-                <h3 className={styles.noMargin}>
-                  <ExactNavLink to={`/${node.name}/${country.name}`}>
-                    {country.name}
-                  </ExactNavLink>
-                </h3>
-              </li>
-            ))}
-          </ol>
-        </li>
-      ))}
-    </ol>
-  </nav>
+  <ol className={`${styles.sportsList}`}>
+    {sports.map(({ node }, idx) => (
+      <li key={idx} className={`${styles.sportItem}`}>
+        <h3 className={styles.noMargin}>
+          <PartialNavLink to={`/${node.name}`}>{node.name}</PartialNavLink>
+        </h3>
+        <ol className={`${styles.countriesList}`}>
+          {node.countries.map((country, idx) => (
+            <li key={idx} className={`${styles.countryItem}`}>
+              <h3 className={styles.noMargin}>
+                <ExactNavLink to={`/${node.name}/${country.name}`}>
+                  {country.name}
+                </ExactNavLink>
+              </h3>
+            </li>
+          ))}
+        </ol>
+      </li>
+    ))}
+  </ol>
 )

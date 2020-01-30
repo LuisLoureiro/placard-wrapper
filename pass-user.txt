@@ -1,0 +1,33 @@
+use placard_dev
+db.createUser(
+  {
+    user: "placard_wrapper",
+    pwd: "59b2d5fc6f6ab662f0f837b0",
+    roles: [ { role: "read", db: "placard_dev" } ]
+  }
+)
+
+use placard_dev
+db.auth('placard_wrapper', '59b2d5fc6f6ab662f0f837b0')
+
+use placard_dev
+db.createUser(
+  {
+    user: "placard_scraping",
+    pwd: "5b6039fed3acce4d7ed24a55",
+    roles: [ { role: "readWrite", db: "placard_dev" } ]
+  }
+)
+db.auth('placard_scraping', '5b6039fed3acce4d7ed24a55')
+
+
+
+use heroku_rvm7q988;
+
+db.createUser(
+  {
+    user: "placard_scraping",
+    pwd: "5b6039fed3acce4d7ed24a55",
+    roles: [ { role: "readWrite", db: "heroku_rvm7q988" } ]
+  }
+)

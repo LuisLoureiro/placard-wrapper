@@ -33,7 +33,7 @@ export default class ComponentRenderer extends React.Component {
 
   render () {
     return (
-      <main>
+      <>
         {this.state.pageResources.map((pageResources, idx) =>
           React.createElement(pageResources.component, {
             ...pageResources.json,
@@ -48,7 +48,7 @@ export default class ComponentRenderer extends React.Component {
             linkName='Carregar mais eventos'
           />
         ) : null}
-      </main>
+      </>
     )
   }
 }

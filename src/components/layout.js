@@ -23,13 +23,19 @@ export default ({ children }) => (
     `}
     render={data => (
       <>
-        <Navigation
-          sports={data.allMongodbPlacardDevSportsAndCountries.edges}
-        />
-        {children}
-        <section className={styles.simulator}>
-          <EventListenerSimulator eventName='odd-selected' />
-        </section>
+        <main>{children}</main>
+        <aside>
+          <article
+            className={`${styles.fixed} ${styles.bottomRight} ${styles.simulator}`}
+          >
+            <EventListenerSimulator eventName='odd-selected' />
+          </article>
+          <nav className={`${styles.fixed} ${styles.topRight}`}>
+            <Navigation
+              sports={data.allMongodbPlacardDevSportsAndCountries.edges}
+            />
+          </nav>
+        </aside>
       </>
     )}
   />
