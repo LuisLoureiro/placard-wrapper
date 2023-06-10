@@ -9,7 +9,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "gatsby": "^2.18.17",
+    "gatsby": "^4.25.7",
     "gatsby-plugin-stylus": "^2.1.19",
     "gatsby-source-mongodb": "^2.1.27",
     "react": "^16.12.0",
